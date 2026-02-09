@@ -182,5 +182,44 @@ Using: trefle API and GBIF
 * Peru (PE)
 * Ecuador (EC)
 * Bolivia (BO)
-
 ---
+["IE", "GB", "FR", "BE", "NL", "LU"]
+["DE", "CH", "AT", "PL", "CZ", "SK", "HU", "SI", "HR", "RO", "BG"]
+["ES", "PT", "IT", "GR", "MT"]
+["NO", "SE", "FI", "EE", "LV", "LT"]
+["TR", "GE", "AM", "AZ"]
+["MA", "DZ", "TN"]
+["SN", "ML", "BF", "NG", "KE", "TZ", "ZM", "ZW", "BW", "ZA"]
+["CM", "GA", "CG", "CD", "CI"]
+["ET", "UG", "RW"]
+["IR","IQ","JO","KZ","UZ","TM"]
+["CN", "JP", "KR", "KP"]
+["IN","BD","TH", "VN", "MY", "ID", "PH"]
+["CA","US"]
+["MX","GT","CO","BR","PE", "EC", "BO"]
+# Information at the end of the round
+
+Common name
+Scientific name
+Year
+Family common name
+Observations
+
+Average height
+Maximum height
+
+Color of the flower
+Color of the leaf
+Color and shape of the fruit?
+Edible?
+
+Growth rate
+Description of growth
+Fruit months
+Bloom months
+Duration of life
+Soil texture
+Min and max temperature
+
+
+

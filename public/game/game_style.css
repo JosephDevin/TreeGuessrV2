@@ -1,0 +1,269 @@
+:root {
+    --bg: hsl(220, 20%, 8%);
+    --card-bg: hsl(220, 16%, 14%);
+    --fg: hsl(0, 0%, 98%);
+    --accent: hsl(145, 70%, 45%);
+    --accent-2: hsl(160, 70%, 40%);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+h1 {
+    margin-bottom: 2rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), white);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1280px;
+    margin-bottom: 2rem;
+}
+.slot {
+    background: var(--card-bg);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s ease, box-shadow .3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+}
+
+.slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+}
+
+.slot:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,.6);
+    z-index: 2;
+}
+
+.slot:hover img { transform: scale(1.1); }
+
+.controls {
+    display: grid;
+    gap: 0.9rem;
+    place-items: center;
+    width: 100%;
+    max-width: 420px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 999px;
+    outline: none;
+    background: var(--card-bg);
+    color: var(--fg);
+    transition: box-shadow .2s ease, transform .08s ease;
+}
+input[type="text"]:focus { box-shadow: 0 0 0 3px var(--accent); }
+
+/* Modern button */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    padding: 0.9rem 1.3rem;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: hsl(220 20% 8%);
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    cursor: pointer;
+    transition: transform .12s ease, filter .12s ease, box-shadow .2s ease;
+    user-select: none;
+}
+.btn:hover { transform: translateY(-1px); filter: brightness(1.02); }
+.btn:active { transform: translateY(0); filter: brightness(0.98); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(152, 255, 204, .45); }
+
+/* Hidden by default */
+.is-hidden { display: none !important; }
+
+#hint {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    transition: opacity .25s ease;
+}
+#hint.is-hidden {
+    opacity: 0;
+    display: none;
+}
+
+#suggestions {
+    list-style: none;
+    margin: 0 0 0.5rem 0;      /* sits just above the input */
+    padding: 0;
+    width: 100%;
+    max-width: 420px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 22px rgba(0,0,0,.45);
+    overflow: hidden;
+    z-index: 5;
+}
+
+#suggestions li {
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+
+#suggestions li:hover,
+#suggestions li.is-active {
+    background: rgba(255,255,255,0.08);
+}
+
+#suggestions.is-hidden { display: none; }
+
+/* Container centered under the gallery */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Wider to allow the row to breathe */
+    margin: 2rem auto;
+    gap: 1.5rem;
+}
+
+/* The horizontal line containing Score, Input, and Skip */
+.input-row {
+    display: flex;
+    flex-direction: row; /* Force horizontal alignment */
+    align-items: center;
+    justify-content: center; /* Center the whole group */
+    gap: 1.2rem;
+    width: 100%;
+}
+
+/* Score: Fixed width so it doesn't jump when numbers change */
+#scoreText {
+    min-width: 100px;
+    text-align: right;
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Input: Flexible middle part */
+input[type="text"] {
+    flex: 1; /* Takes up remaining space */
+    max-width: 450px; /* Prevents it from getting too huge on wide screens */
+    padding: 0.9rem 1.5rem;
+    text-align: center;
+}
+
+/* Skip Button: Keeps its own size */
+#skip {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Ensure suggestions stay aligned with the input box */
+#suggestions {
+    width: 100%;
+    max-width: 450px;
+    margin-top: -0.5rem; /* Pull up towards the input */
+}
+
+/* Loader container covers viewport */
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* exact center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    z-index: 1000;
+    width: min(100% - 2rem, 980px); /* match main card width */
+    height: auto;
+}
+
+/* Card-style container inside loader */
+.spinner-card {
+    background: rgba(255, 255, 255, 0.05); /* subtle tint over bg */
+    border-radius: 28px;          /* match main card shape */
+    padding: 2.5rem;              /* same padding as main card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--fg);
+    width: 100%;
+    box-shadow: none;             /* no heavy shadow */
+}
+
+/* Spinner circle */
+.spinner {
+    width: 120px;
+    height: 120px;
+    border: 10px solid rgba(255,255,255,0.15);
+    border-top: 10px solid var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+    box-shadow: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading text */
+.spinner-card p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-style: italic;
+    margin: 0;
+}
+
+
+
+
+
+
+

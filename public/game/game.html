@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tree Guessr - En cours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="game_style.css">
+</head>
+
+<body>
+
+<div id="loading" class="is-hidden">
+    <div class="spinner-card">
+        <div class="spinner"></div>
+        <p>Chargement des images...</p>
+    </div>
+</div>
+
+<div id="content" class="is-hidden">
+    <h1>Tree Guessr</h1>
+
+    <div class="gallery">
+        <div class="slot"><img src="" id="slot1" /></div>
+        <div class="slot"><img src="" id="slot2" /></div>
+        <div class="slot"><img src="" id="slot3" /></div>
+    </div>
+
+    <p id="hint" class="is-hidden">Indice: </p>
+
+    <div class="controls">
+        <ul id="suggestions" class="is-hidden" role="listbox" aria-label="Suggestions"></ul>
+
+        <div class="input-row">
+            <span id="scoreText" aria-label="Score">Score: 0</span>
+            <input id="answer" type="text" placeholder="Votre réponse..." autocomplete="off" />
+            <button id="skip" class="btn" type="button" aria-hidden="true">⏩ Passer</button>
+        </div>
+
+        <button id="continue" class="btn is-hidden" type="button" aria-hidden="true">
+            ⏩ Continuer
+        </button>
+    </div>
+
+</div>
+
+<script src="shake.js"></script>
+<script type="module" src="game.js"></script>
+</body>
+</html>
