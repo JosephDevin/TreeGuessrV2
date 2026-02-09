@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tree Guessr v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<main class="shell">
+    <div class="language-select-top" id="languageSelect">
+        <button class="lang-btn" type="button" aria-haspopup="listbox">
+            <span class="lang-label">FR</span>
+            <span class="chevron">▾</span>
+        </button>
+        <ul class="lang-menu" role="listbox">
+            <li data-lang="fr">🇫🇷 - FR</li>
+            <li data-lang="en">🇬🇧 - EN</li>
+        </ul>
+    </div>
+
+    <section class="card" role="region" aria-label="Accueil Tree Guessr">
+        <h1>Tree Guessr v2</h1>
+        <p class="subtitle">Un jeu où vous devinez l'arbre à partir d'une photo. Prêt à mettre vos connaissances botaniques à l'épreuve&nbsp;?</p>
+        <div class="cta-group">
+            <a href="../game/game.html" class="cta" aria-label="Jouer à Tree Guessr maintenant" id="playBtn">
+                <span class="icon" aria-hidden="true">🌳</span>
+                <span>Jouer</span>
+            </a>
+
+            <div class="area-select" id="areaSelect">
+                <button class="area-btn" type="button" aria-haspopup="listbox">
+                    <span class="area-label">🌍 Régions</span>
+                    <span class="chevron">▾</span>
+                </button>
+                <ul class="area-menu" role="listbox">
+                    <!-- Whole world -->
+                    <li data-value="whole-world" data-tooltip="Tous...">🌍 Monde entier</li>
+                    <li class="divider"><span>Europe</span></li>
+
+                    <!-- Europe & West Asia -->
+                    <li data-value="western-europe" data-tooltip="IE, GB, FR, BE, NL, LU">🇪🇺 Europe de l'Ouest</li>
+                    <li data-value="central-europe" data-tooltip="DE, CH, AT, PL, CZ, SK, HU, SI, HR, RO, BG">🌲 Europe Centrale & de l'Est</li>
+                    <li data-value="mediterranean-europe" data-tooltip="ES, PT, IT, GR, MT">🌞 Europe méditerranéenne</li>
+                    <li data-value="northern-europe" data-tooltip="NO, SE, FI, EE, LV, LT">❄️ Europe du Nord</li>
+                    <li data-value="caucasus" data-tooltip="TR, GE, AM, AZ">🏔️ Caucase </li>
+
+                    <li class="divider"><span>Africa</span></li>
+
+                    <!-- Africa -->
+                    <li data-value="north-africa" data-tooltip="MA, DZ, TN">🏜️ Afrique du Nord</li>
+                    <li data-value="african-savanna" data-tooltip="SN, ML, BF, NG, KE, TZ, ZM, ZW, BW, ZA">🐘 Savanne </li>
+                    <li data-value="afrotropical" data-tooltip="CM, GA, CG, CD, CI">🌴 Jungles africaines</li>
+                    <li data-value="african-highlands" data-tooltip="ET, UG, RW">⛰️ Hauts plateaux d'Afrique</li>
+
+                    <li class="divider"><span>Asia</span></li>
+
+                    <!-- Asia -->
+                    <li data-value="west-central-asia" data-tooltip="IR, IQ, JO, KZ, UZ, TM">🪾 Asie du centre</li>
+                    <li data-value="east-asia" data-tooltip="CN, JP, KR, KP">🍂 Asie de l'Est</li>
+                    <li data-value="south-sea-asia" data-tooltip="IN, BD, TH, VN, MY, ID, PH">🌴 Tropiques d'Asie du Sud</li>
+
+                    <li class="divider"><span>Americas</span></li>
+
+                    <!-- Americas -->
+                    <li data-value="north-america" data-tooltip="US, CA">🍁 Amerique du Nord</li>
+                    <li data-value="neotropics" data-tooltip="MX, GT, CO, BR, PE, EC, BO">🦜 Amerique centrale & du Sud</li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="high-score" id="highScore">
+            Meilleur score : 0
+        </div>
+    </section>
+</main>
+
+<script>
+    const areaSelect = document.getElementById("areaSelect");
+    const button = areaSelect.querySelector(".area-btn");
+    const label = areaSelect.querySelector(".area-label");
+    const items = areaSelect.querySelectorAll(".area-menu li[data-value]");
+
+    // Toggle dropdown
+    button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        areaSelect.classList.toggle("open");
+    });
+
+    // Select an item
+    items.forEach(item => {
+        item.addEventListener("click", () => {
+            items.forEach(i => i.classList.remove("selected"));
+            item.classList.add("selected");
+            label.textContent = item.textContent;
+            areaSelect.classList.remove("open");
+            areaSelect.dataset.selected = item.dataset.value;
+        });
+    });
+
+    // Click outside → close
+    document.addEventListener("click", () => areaSelect.classList.remove("open"));
+
+    // Close on ESC
+    document.addEventListener("keydown", (e) => {
+        if(e.key === "Escape") areaSelect.classList.remove("open");
+    });
+
+    const languageSelectTop = document.getElementById("languageSelect");
+    const langBtnTop = languageSelectTop.querySelector(".lang-btn");
+
+    langBtnTop.addEventListener("click", (e) => {
+        e.stopPropagation();
+        languageSelectTop.classList.toggle("open");
+    });
+
+    document.addEventListener("click", () => {
+        languageSelectTop.classList.remove("open");
+    });
+
+    const areaItems = document.querySelectorAll(".area-menu li[data-value]");
+
+    let tooltipEl = null;
+
+    areaItems.forEach(item => {
+        item.addEventListener("mouseenter", e => {
+            const text = item.dataset.tooltip;
+            if(!text) return;
+
+            tooltipEl = document.createElement("div");
+            tooltipEl.className = "tooltip";
+            tooltipEl.textContent = text;
+            document.body.appendChild(tooltipEl);
+
+            const rect = item.getBoundingClientRect();
+            tooltipEl.style.left = `${rect.right + 8}px`;
+            tooltipEl.style.top = `${rect.top + rect.height/2}px`;
+        });
+
+        item.addEventListener("mouseleave", () => {
+            if(tooltipEl) tooltipEl.remove();
+            tooltipEl = null;
+        });
+    });
+
+
+</script>
+</body>
+</html>
