@@ -221,5 +221,23 @@ Duration of life
 Soil texture
 Min and max temperature
 
+---
+
+# Score system
+
+Each round you start with 5000.
+
+Skipping anytime: -REMAINING_POINTS => 0 points for the round
+
+First try mistake: -500
+Second try mistake: -1000
+Third try mistake:
+    If right family: -0 points
+    if not: -1500p
+Forth try mistake: -1000
+Final mistake:
+    If right family: +500 => 1500p or 3000p
+    If not, 0p
+
 
 

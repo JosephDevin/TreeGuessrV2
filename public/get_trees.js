@@ -1,5 +1,5 @@
-export function createTree(scientificName, frenchName, aliases, trefleData) {
-    return { scientificName, frenchName, aliases, trefleData };
+export function createTree(scientificName, frenchName, aliases, trefleData, familyName) {
+    return { scientificName, frenchName, aliases, trefleData, familyName };
 }
 
 export async function getData() {
@@ -18,7 +18,8 @@ export async function getData() {
         data.scientific_name,
         data.nom_francais,
         data.aliases_francais || [],
-        data.botanical_details || null
+        data.botanical_details || null,
+        data.family_name || null
     );
 }
 

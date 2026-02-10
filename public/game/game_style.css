@@ -180,7 +180,7 @@ input[type="text"]:focus { box-shadow: 0 0 0 3px var(--accent); }
     min-width: 100px;
     text-align: right;
     font-size: 1.1rem;
-    color: var(--accent);
+    color: #2EB867FF;
     font-weight: 700;
 }
 
@@ -244,7 +244,7 @@ input[type="text"] {
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 1rem;
-    box-shadow: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3), 0 0 10px var(--bg);
 }
 
 @keyframes spin {

@@ -8,7 +8,7 @@ const app = express();
 const TREFLE_TOKEN = "usr-T5c2j4Ln4fXpHLnAIw2j_prE7KeZasfdSf9nswR9D7s"
 const TREE_FAMILIES = [
     "Fagaceae","Pinaceae","Betulaceae","Sapindaceae","Oleaceae",
-    "Rosaceae","Salicaceae","Cupressaceae","Ulmaceae",
+    "Salicaceae","Cupressaceae","Ulmaceae",
     "Aquifoliaceae","Tiliaceae","Platanaceae"
 ];
 
@@ -129,7 +129,8 @@ router.get("/common-trees", async (req, res) => {
                     scientific_name: info.canonicalName,
                     nom_francais: fr.main,
                     aliases_francais: fr.aliases,
-                    botanical_details: trefle
+                    botanical_details: trefle,
+                    family_name: info.family
                 });
             } catch (err) {
                 console.error(`Skipping ${item.name} due to fetch error`);

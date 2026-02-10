@@ -207,16 +207,26 @@
         <p class="subtitle">La partie est finie. Entrainez vous sur d'autres régions, sur d'autres arbres!</p>
 
         <div class="high-score-container">
-            <div class="high-score" id="highScore">
+            <div class="high-score" id="scoreText">
                 Score : 0
             </div>
-            <a href="../index.html" class="cta cta-small" aria-label="Rejouer à Tree Guessr">
+            <a href="../../index.html" class="cta cta-small" aria-label="Rejouer à Tree Guessr">
                 <span class="icon" aria-hidden="true">🌳</span>
                 <span>Rejouer</span>
             </a>
         </div>
-
     </section>
 </main>
 </body>
+
+<script>
+    let score = parseInt(localStorage.getItem("score"), 10);
+
+    window.onload = function() {
+        document.getElementById("scoreText").textContent = "Score: " + score + "/25000";
+    }
+
+
+</script>
+
 </html>

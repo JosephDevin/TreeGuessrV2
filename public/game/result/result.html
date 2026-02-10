@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tree Guessr - Results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="result.css">
+</head>
+
+<body>
+<main class="shell">
+    <section class="card" role="region" aria-label="Résultats Tree Guessr">
+        <div class="left-column" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+            <div class="image-frame">
+                <img id="habitImg" src="" alt="Tree Habit">
+            </div>
+            <span id="scoreText">Score total: </span>
+        </div>
+
+        <div class="title-block">
+            <div class="header-container">
+                <h1 id="habit">Nom Français</h1>
+                <h2 id="scientificName">Scientific Name</h2>
+            </div>
+            <p id="aliasesDisplay" style="color: var(--muted); margin: 0; font-style: italic;"></p>
+
+            <ul class="habit-list">
+                <li>Famille: <span id="family"></span></li>
+                <li>Taille moyenne: <span id="height"></span></li>
+                <li>Couleur de la fleur: <span id="flowerColor"></span></li>
+                <li>Couleur de la feuille: <span id="leafColor"></span></li>
+                <li>Vitesse de croissance: <span id="growth"></span></li>
+                <li>Température minimale: <span id="tempMin"></span></li>
+                <li>Température maximale: <span id="tempMax"></span></li>
+            </ul>
+        </div>
+
+        <div class="card-action">
+            <button class="btn-primary" id="nextBtn">Suivant</button>
+        </div>
+    </section>
+</main>
+
+<script src="result.js"></script>
+</body>
+</html>

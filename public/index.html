@@ -27,13 +27,13 @@
         <h1>Tree Guessr</h1>
         <p class="subtitle">Un jeu où vous devinez l'arbre à partir d'une photo. Prêt à mettre vos connaissances botaniques à l'épreuve&nbsp;?</p>
         <div class="cta-group">
-            <a href="game/game.html" class="cta" aria-label="Jouer à Tree Guessr maintenant" id="playBtn">
+            <a class="cta" aria-label="Jouer à Tree Guessr maintenant" id="playBtn">
                 <span class="icon" aria-hidden="true">🌳</span>
                 <span>Jouer</span>
             </a>
 
             <div class="area-select" id="areaSelect">
-                <button class="area-btn" type="button" aria-haspopup="listbox">
+                <button class="area-btn" type="button" aria-haspopup="listbox" id="areaBtn">
                     <span class="area-label">🌍 Monde entier</span>
                     <span class="chevron">▾</span>
                 </button>
@@ -78,12 +78,21 @@
 
 <script>
     const areaSelect = document.getElementById("areaSelect");
-    const button = areaSelect.querySelector(".area-btn");
+    const button = document.getElementById("playBtn");
+    const areaButton = document.getElementById("areaBtn");
     const label = areaSelect.querySelector(".area-label");
     const items = areaSelect.querySelectorAll(".area-menu li[data-value]");
 
+    localStorage.setItem("score", 0);
+
+    button.addEventListener("click", () => {
+        localStorage.setItem("round", 1);
+        console.log(localStorage.getItem("round"));
+        window.location.href = "/game/game.html";
+    })
+
     // Toggle dropdown
-    button.addEventListener("click", (e) => {
+    areaButton.addEventListener("click", (e) => {
         e.stopPropagation();
         areaSelect.classList.toggle("open");
     });
@@ -134,8 +143,7 @@
 
             const rect = item.getBoundingClientRect();
 
-            // Place tooltip slightly to the right and vertically centered
-            tooltipEl.style.left = `${rect.right + 8}px`;   // 8px offset from item
+            tooltipEl.style.left = `${rect.right + 8}px`;
             tooltipEl.style.top = `${rect.top + rect.height / 2 - tooltipEl.offsetHeight / 2}px`;
         });
 
