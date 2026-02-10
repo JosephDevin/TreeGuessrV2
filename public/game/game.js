@@ -19,7 +19,11 @@ window.onload = async function () {
             return;
         }
 
-        await loadPictures(tree);
+        loadPictures(tree);
+
+        for (let i = 0; i < tree.aliases.length; i++) {
+            console.log(tree.aliases[i]);
+        }
 
         loadingEl.classList.add("is-hidden");
         contentEl.classList.remove("is-hidden");
@@ -30,13 +34,10 @@ window.onload = async function () {
     }
 };
 
-
-
 function loadPictures(tree) {
     slot1.src = tree.trefleData.image_leaf;
     slot2.src = tree.trefleData.image_habit;
     slot3.src = tree.trefleData.image_flower_or_bark;
-
 }
 
 

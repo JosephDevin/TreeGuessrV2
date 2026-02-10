@@ -1,25 +1,18 @@
 export function createTree(scientificName, frenchName, aliases, trefleData) {
-    return {
-        scientificName,
-        frenchName,
-        aliases,
-        trefleData
-    };
+    return { scientificName, frenchName, aliases, trefleData };
 }
 
 export async function getData() {
     const res = await fetch("/api/common-trees");
 
     if (!res.ok) {
-        throw new Error(`API error: ${res.status}`);
+        console.error("API error", res.status);
+        return null;
     }
 
     const data = await res.json();
 
-    if (!data) {
-        console.error("API returned nothing");
-        return null;
-    }
+    if (!data) return null;
 
     return createTree(
         data.scientific_name,
