@@ -1,6 +1,4 @@
-
 let score = parseInt(localStorage.getItem("score"), 10);
-
 
 /* =======================
    Data Processing Function
@@ -17,7 +15,7 @@ function flattenTree(tree) {
     // Return a single flat object
     return {
         sciName: scientificName,
-        frName: frenchName || scientificName,
+        frName: frenchName.charAt(0).toUpperCase() + frenchName.slice(1).toLowerCase() || scientificName,
         family: familyName,
         aliases: aliases.length > 0
             ? aliases
@@ -29,6 +27,7 @@ function flattenTree(tree) {
         leafImg: trefleData.image_leaf,
         habitImg: trefleData.image_habit || "https://via.placeholder.com/350x420?text=Image+Non+Disponible",
         barkImg: trefleData.image_flower_or_bark,
+        rarity: trefleData.rarity,
         height: trefleData.average_height ? `${trefleData.average_height} cm` : "Inconnue",
         flowerColor: trefleData.flower_color || "Non spécifiée",
         leafColor: trefleData.leaf_color || "Vert",
@@ -57,6 +56,8 @@ window.onload = function() {
     const treeData = JSON.parse(rawData);
     const flatTree = flattenTree(treeData);
 
+    let habit = flatTree.frName;
+    habit[0] = habit[0].toUpperCase();
     document.getElementById('habit').textContent = flatTree.frName;
     document.getElementById('scientificName').textContent = `(${flatTree.sciName})`;
     document.getElementById('habitImg').src = flatTree.habitImg;
@@ -74,18 +75,39 @@ window.onload = function() {
     document.getElementById('tempMin').textContent = flatTree.tempMin;
     document.getElementById('tempMax').textContent = flatTree.tempMax;
 
+    console.log(flatTree.rarity);
+
+    let rarityEl = document.getElementById('rarity');
+    let rarity = getRarity(parseInt(flatTree.rarity));
+    rarityEl.textContent = rarity.text;
+    rarityEl.style.color = rarity.color;
+
     nextBtn.onclick = () => {
+        const selectedArea = localStorage.getItem("selectedArea") || "whole-world";
+
+        // If game finished
         if (round >= 5) {
             window.location.href = "../end/end.html";
         }
-        else
-        {
+        else {
             localStorage.setItem("round", round + 1);
-            console.log(round);
 
-            window.location.href = "../game.html";
+            window.location.href = `../game.html?area=${selectedArea}`;
         }
     };
 
     document.getElementById('scoreText').textContent = "Score total: " + score + "/" + round*5000;
+}
+
+function getRarity(occurrences) {
+    if (occurrences >= 15000)
+        return { text : "Commun", color : "#2596be" };
+    else if (occurrences >= 10000 && occurrences <= 15000)
+        return { text : "Rare", color : "#bc4807" };
+    else if (occurrences >= 5000 && occurrences <= 10000)
+        return { text : "Epique", color : "#651572" };
+    else if (occurrences <= 5000){
+        return { text : "Légendaire", color : "#FFD700" };
+    }
+    else { return { text: "Erreur", color : "#c1c1c1" }; }
 }

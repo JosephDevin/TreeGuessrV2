@@ -1,0 +1,415 @@
+{
+  "western-europe":
+  [
+    {
+      "scientificName": "Crataegus monogyna",
+      "family": "Rosaceae",
+      "occurrences": 870907
+    },
+    {
+      "scientificName": "Fagus sylvatica",
+      "family": "Fagaceae",
+      "occurrences": 633254
+    },
+    {
+      "scientificName": "Fraxinus excelsior",
+      "family": "Oleaceae",
+      "occurrences": 768650
+    },
+    {
+      "scientificName": "Acer pseudoplatanus",
+      "family": "Sapindaceae",
+      "occurrences": 528766
+    },
+    {
+      "scientificName": "Quercus robur",
+      "family": "Fagaceae",
+      "occurrences": 709448
+    },
+    {
+      "scientificName": "Corylus avellana",
+      "family": "Betulaceae",
+      "occurrences": 716604
+    },
+    {
+      "scientificName": "Prunus spinosa",
+      "family": "Rosaceae",
+      "occurrences": 594203
+    },
+    {
+      "scientificName": "Cornus sanguinea",
+      "family": "Cornaceae",
+      "occurrences": 491989
+    },
+    {
+      "scientificName": "Ilex aquifolium",
+      "family": "Aquifoliaceae",
+      "occurrences": 465935
+    },
+    {
+      "scientificName": "Sorbus aucuparia",
+      "family": "Rosaceae",
+      "occurrences": 439524
+    },
+    {
+      "scientificName": "Alnus glutinosa",
+      "family": "Betulaceae",
+      "occurrences": 456620
+    },
+    {
+      "scientificName": "Acer campestre",
+      "family": "Sapindaceae",
+      "occurrences": 402957
+    },
+    {
+      "scientificName": "Betula pendula",
+      "family": "Betulaceae",
+      "occurrences": 381940
+    },
+    {
+      "scientificName": "Carpinus betulus",
+      "family": "Betulaceae",
+      "occurrences": 357474
+    },
+    {
+      "scientificName": "Pinus sylvestris",
+      "family": "Pinaceae",
+      "occurrences": 310434
+    },
+    {
+      "scientificName": "Prunus avium",
+      "family": "Rosaceae",
+      "occurrences": 305241
+    },
+    {
+      "scientificName": "Juniperus communis",
+      "family": "Cupressaceae",
+      "occurrences": 285321
+    },
+    {
+      "scientificName": "Vicia sepium",
+      "family": "Fabaceae",
+      "occurrences": 281526
+    },
+    {
+      "scientificName": "Salix caprea",
+      "family": "Salicaceae",
+      "occurrences": 275061
+    },
+    {
+      "scientificName": "Castanea sativa",
+      "family": "Fagaceae",
+      "occurrences": 252329
+    },
+    {
+      "scientificName": "Ulmus minor",
+      "family": "Ulmaceae",
+      "occurrences": 236559
+    },
+    {
+      "scientificName": "Populus tremula",
+      "family": "Salicaceae",
+      "occurrences": 226402
+    },
+    {
+      "scientificName": "Quercus petraea",
+      "family": "Fagaceae",
+      "occurrences": 227203
+    },
+    {
+      "scientificName": "Robinia pseudoacacia",
+      "family": "Fabaceae",
+      "occurrences": 231200
+    },
+    {
+      "scientificName": "Ulex europaeus",
+      "family": "Fabaceae",
+      "occurrences": 213710
+    },
+    {
+      "scientificName": "Quercus pubescens",
+      "family": "Fagaceae",
+      "occurrences": 192451
+    },
+    {
+      "scientificName": "Rubus idaeus",
+      "family": "Rosaceae",
+      "occurrences": 189937
+    },
+    {
+      "scientificName": "Picea abies",
+      "family": "Pinaceae",
+      "occurrences": 168863
+    },
+    {
+      "scientificName": "Betula pubescens",
+      "family": "Betulaceae",
+      "occurrences": 184736
+    },
+    {
+      "scientificName": "Rosa arvensis",
+      "family": "Rosaceae",
+      "occurrences": 173586
+    },
+    {
+      "scientificName": "Salix alba",
+      "family": "Salicaceae",
+      "occurrences": 194716
+    },
+    {
+      "scientificName": "Rubus fruticosus",
+      "family": "Rosaceae",
+      "occurrences": 158428
+    },
+    {
+      "scientificName": "Juglans regia",
+      "family": "Juglandaceae",
+      "occurrences": 139089
+    },
+    {
+      "scientificName": "Prunus serotina",
+      "family": "Rosaceae",
+      "occurrences": 158547
+    },
+    {
+      "scientificName": "Hippocrepis comosa",
+      "family": "Fabaceae",
+      "occurrences": 137078
+    },
+    {
+      "scientificName": "Melilotus albus",
+      "family": "Fabaceae",
+      "occurrences": 115082
+    },
+    {
+      "scientificName": "Prunus padus",
+      "family": "Rosaceae",
+      "occurrences": 115064
+    },
+    {
+      "scientificName": "Acer platanoides",
+      "family": "Sapindaceae",
+      "occurrences": 114485
+    },
+    {
+      "scientificName": "Abies alba",
+      "family": "Pinaceae",
+      "occurrences": 120673
+    },
+    {
+      "scientificName": "Aesculus hippocastanum",
+      "family": "Sapindaceae",
+      "occurrences": 113401
+    },
+    {
+      "scientificName": "Prunus laurocerasus",
+      "family": "Rosaceae",
+      "occurrences": 116971
+    },
+    {
+      "scientificName": "Quercus ilex",
+      "family": "Fagaceae",
+      "occurrences": 112710
+    },
+    {
+      "scientificName": "Torminalis glaberrima",
+      "family": "Rosaceae",
+      "occurrences": 105782
+    },
+    {
+      "scientificName": "Amelanchier ovalis",
+      "family": "Rosaceae",
+      "occurrences": 100213
+    },
+    {
+      "scientificName": "Crataegus laevigata",
+      "family": "Rosaceae",
+      "occurrences": 94197
+    },
+    {
+      "scientificName": "Prunus mahaleb",
+      "family": "Rosaceae",
+      "occurrences": 93547
+    },
+    {
+      "scientificName": "Taxus baccata",
+      "family": "Taxaceae",
+      "occurrences": 90676
+    },
+    {
+      "scientificName": "Ulmus glabra",
+      "family": "Ulmaceae",
+      "occurrences": 88727
+    },
+    {
+      "scientificName": "Salix aurita",
+      "family": "Salicaceae",
+      "occurrences": 89502
+    },
+    {
+      "scientificName": "Populus nigra",
+      "family": "Salicaceae",
+      "occurrences": 89723
+    },
+    {
+      "scientificName": "Rubus ulmifolius",
+      "family": "Rosaceae",
+      "occurrences": 90730
+    },
+    {
+      "scientificName": "Quercus rubra",
+      "family": "Fagaceae",
+      "occurrences": 84488
+    },
+    {
+      "scientificName": "Genista tinctoria",
+      "family": "Fabaceae",
+      "occurrences": 78185
+    },
+    {
+      "scientificName": "Populus alba",
+      "family": "Salicaceae",
+      "occurrences": 76805
+    },
+    {
+      "scientificName": "Rhododendron ponticum",
+      "family": "Ericaceae",
+      "occurrences": 71840
+    },
+    {
+      "scientificName": "Larix decidua",
+      "family": "Pinaceae",
+      "occurrences": 74659
+    },
+    {
+      "scientificName": "Tilia platyphyllos",
+      "family": "Malvaceae",
+      "occurrences": 70460
+    },
+    {
+      "scientificName": "Genista anglica",
+      "family": "Fabaceae",
+      "occurrences": 63262
+    },
+    {
+      "scientificName": "Cornus mas",
+      "family": "Cornaceae",
+      "occurrences": 63403
+    },
+    {
+      "scientificName": "Salix purpurea",
+      "family": "Salicaceae",
+      "occurrences": 59295
+    },
+    {
+      "scientificName": "Rhododendron ferrugineum",
+      "family": "Ericaceae",
+      "occurrences": 62375
+    },
+    {
+      "scientificName": "Salix viminalis",
+      "family": "Salicaceae",
+      "occurrences": 58389
+    },
+    {
+      "scientificName": "Malus sylvestris",
+      "family": "Rosaceae",
+      "occurrences": 57248
+    },
+    {
+      "scientificName": "Pinus nigra",
+      "family": "Pinaceae",
+      "occurrences": 52335
+    },
+    {
+      "scientificName": "Hibiscus syriacus",
+      "family": "Malvaceae",
+      "occurrences": 48102
+    },
+    {
+      "scientificName": "Tilia cordata",
+      "family": "Malvaceae",
+      "occurrences": 51400
+    },
+    {
+      "scientificName": "Lathyrus latifolius",
+      "family": "Fabaceae",
+      "occurrences": 57158
+    },
+    {
+      "scientificName": "Pseudotsuga menziesii",
+      "family": "Pinaceae",
+      "occurrences": 47647
+    },
+    {
+      "scientificName": "Juniperus oxycedrus",
+      "family": "Cupressaceae",
+      "occurrences": 47528
+    },
+    {
+      "scientificName": "Acer opalus",
+      "family": "Sapindaceae",
+      "occurrences": 46701
+    },
+    {
+      "scientificName": "Genista sagittalis",
+      "family": "Fabaceae",
+      "occurrences": 44715
+    },
+    {
+      "scientificName": "Prunus cerasifera",
+      "family": "Rosaceae",
+      "occurrences": 43098
+    },
+    {
+      "scientificName": "Pinus pinaster",
+      "family": "Pinaceae",
+      "occurrences": 43664
+    },
+    {
+      "scientificName": "Geum montanum",
+      "family": "Rosaceae",
+      "occurrences": 40521
+    },
+    {
+      "scientificName": "Acer negundo",
+      "family": "Sapindaceae",
+      "occurrences": 41596
+    },
+    {
+      "scientificName": "Malus domestica",
+      "family": "Rosaceae",
+      "occurrences": 40570
+    },
+    {
+      "scientificName": "Laurus nobilis",
+      "family": "Lauraceae",
+      "occurrences": 37826
+    },
+    {
+      "scientificName": "Alnus incana",
+      "family": "Betulaceae",
+      "occurrences": 37264
+    },
+    {
+      "scientificName": "Acer monspessulanum",
+      "family": "Sapindaceae",
+      "occurrences": 37258
+    },
+    {
+      "scientificName": "Ficus carica",
+      "family": "Moraceae",
+      "occurrences": 36977
+    },
+    {
+      "scientificName": "Prunus domestica",
+      "family": "Rosaceae",
+      "occurrences": 36847
+    },
+    {
+      "scientificName": "Fraxinus angustifolia",
+      "family": "Oleaceae",
+      "occurrences": 34860
+    }
+  ]
+}

@@ -6,15 +6,10 @@ const app = express();
 /* ================== CONSTANTS ================== */
 
 const TREFLE_TOKEN = "usr-T5c2j4Ln4fXpHLnAIw2j_prE7KeZasfdSf9nswR9D7s"
-const TREE_FAMILIES = [
-    "Fagaceae","Pinaceae","Betulaceae","Sapindaceae","Oleaceae",
-    "Salicaceae","Cupressaceae","Ulmaceae",
-    "Aquifoliaceae","Tiliaceae","Platanaceae"
-];
 
 /* ================== HELPERS ================== */
 
-const fetchWithTimeout = async (url, options = {}, timeout = 5000) => {
+const fetchWithTimeout = async (url, options = {}, timeout = 15000) => {
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
     try {
@@ -29,14 +24,18 @@ const fetchWithTimeout = async (url, options = {}, timeout = 5000) => {
 
 async function getTrefleDetailedData(sciname) {
     try {
-        const searchRes = await fetch(
-            `https://trefle.io/api/v1/plants?token=${TREFLE_TOKEN}&filter[scientific_name]=${encodeURIComponent(sciname)}`
+        const searchRes = await fetchWithTimeout(
+            `https://trefle.io/api/v1/plants?token=${TREFLE_TOKEN}&filter[scientific_name]=${encodeURIComponent(sciname)}`,
+            {},
+            12000
         );
         const searchData = await searchRes.json();
         if (!searchData.data?.length) return null;
 
-        const detailRes = await fetch(
-            `https://trefle.io/api/v1/plants/${searchData.data[0].id}?token=${TREFLE_TOKEN}`
+        const detailRes = await fetchWithTimeout(
+            `https://trefle.io/api/v1/plants/${searchData.data[0].id}?token=${TREFLE_TOKEN}`,
+            {},
+            12000
         );
         const full = await detailRes.json();
         const ms = full.data.main_species;
@@ -75,7 +74,11 @@ async function getFrenchData(sciname) {
       } GROUP BY ?item ?label LIMIT 1
     `;
         const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(sparql)}&format=json`;
-        const res = await fetch(url, { headers: { "User-Agent": "TreeGame/1.0" } });
+        const res = await fetchWithTimeout(
+            url,
+            { headers: { "User-Agent": "TreeGame/1.0" } },
+            12000
+        );
         const json = await res.json();
         const r = json.results.bindings[0];
         if (!r) return null;
@@ -88,65 +91,90 @@ async function getFrenchData(sciname) {
     }
 }
 
-/* ================== ROUTE ================== */
-/* ================== ROUTE ================== */
+// Load trees JSON from public URL
+async function loadTreesData(baseUrl) {
+    try {
+        const treesUrl = `${baseUrl}/data/trees/trees.json`;
+        console.log("Loading trees from:", treesUrl);
 
+        const response = await fetchWithTimeout(treesUrl, {}, 10000);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch trees.json: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (e) {
+        console.error("Error loading trees.json:", e);
+        return null;
+    }
+}
+
+/* ================== ROUTE ================== */
 const router = express.Router();
 
-// We define the route as just "/common-trees" inside the router
 router.get("/common-trees", async (req, res) => {
     try {
-        const offset = Math.floor(Math.random() * 500);
-        const gbifUrl = `https://api.gbif.org/v1/occurrence/search?country=GB&country=FR&taxonKey=212&taxonKey=220&facet=speciesKey&limit=0&facetLimit=1000&offset=${offset}`;
+        const selectedArea = req.query.area || 'western-europe';
+        console.log("Requested area:", selectedArea);
 
-        const gbifRes = await fetchWithTimeout(gbifUrl);
-        const gbifData = await gbifRes.json();
+        // Get base URL from the request
+        const protocol = req.headers['x-forwarded-proto'] || 'http';
+        const host = req.headers['x-forwarded-host'] || req.headers.host;
+        const baseUrl = `${protocol}://${host}`;
 
-        if (!gbifData.facets || !gbifData.facets[0]) {
-            return res.status(404).json({ error: "GBIF data unavailable" });
+        // Load trees database
+        const treesDatabase = await loadTreesData(baseUrl);
+        if (!treesDatabase) {
+            return res.status(500).json({ error: "Failed to load trees database" });
         }
 
-        let pool = gbifData.facets[0].counts;
-        pool.sort(() => Math.random() - 0.5);
-
-        for (const item of pool) {
-            try {
-                const infoRes = await fetchWithTimeout(`https://api.gbif.org/v1/species/${item.name}`);
-                if (!infoRes.ok) continue;
-                const info = await infoRes.json();
-
-                if (!TREE_FAMILIES.includes(info.family)) continue;
-
-                const [fr, trefle] = await Promise.all([
-                    getFrenchData(info.canonicalName),
-                    getTrefleDetailedData(info.canonicalName)
-                ]);
-
-                // Check quality: Need trefle data and at least one alias for the game logic
-                if (!trefle || !fr || !fr.aliases || fr.aliases.length === 0) continue;
-
-                return res.json({
-                    scientific_name: info.canonicalName,
-                    nom_francais: fr.main,
-                    aliases_francais: fr.aliases,
-                    botanical_details: trefle,
-                    family_name: info.family
-                });
-            } catch (err) {
-                console.error(`Skipping ${item.name} due to fetch error`);
-                continue;
-            }
+        // Get trees for the selected area
+        const treesForArea = treesDatabase[selectedArea];
+        if (!treesForArea || treesForArea.length === 0) {
+            console.error(`No trees found for area: ${selectedArea}`);
+            return res.status(404).json({ error: `No trees available for area: ${selectedArea}` });
         }
 
-        res.status(404).json({ error: "No valid tree found" });
+        console.log(`Found ${treesForArea.length} trees for ${selectedArea}`);
+
+        // Pick a random tree
+        const randomTree = treesForArea[Math.floor(Math.random() * treesForArea.length)];
+
+        console.log(`Selected: ${randomTree.scientificName}`);
+
+        // Get aliases from Wikidata
+        const fr = await getFrenchData(randomTree.scientificName);
+
+        // Get Trefle data for botanical details
+        const trefle = await getTrefleDetailedData(randomTree.scientificName);
+
+        // Use aliases from Wikidata if available, otherwise use empty array
+        const aliases = (fr && fr.aliases && fr.aliases.length > 0) ? fr.aliases : [];
+
+        // Use French name from JSON, fallback to Wikidata if needed
+        const frenchName = randomTree.frenchName || fr?.main || randomTree.scientificName;
+
+        // Create botanical details object with occurrences
+        const botanicalDetails = trefle || {};
+        botanicalDetails.occurrences = randomTree.occurrences;
+
+        console.log("✓ Returning tree:", randomTree.scientificName);
+        return res.json({
+            scientific_name: randomTree.scientificName,
+            nom_francais: frenchName,
+            aliases_francais: aliases,
+            botanical_details: botanicalDetails,
+            family_name: randomTree.family
+        });
+
     } catch (e) {
-        console.error("Route Error:", e);
-        res.status(500).json({ error: "Network error" });
+        console.error("FATAL Route Error:", e.message, e.stack);
+        res.status(500).json({ error: e.message });
     }
 });
 
 app.use("/.netlify/functions", router);
 app.use("/api", router);
-/* ================== EXPORT ================== */
 
 export const handler = serverless(app);

@@ -7,7 +7,6 @@ let answer;
 
 let score = parseInt(localStorage.getItem("score"), 10);
 
-
 /* ====================================
 Getting all UI elements
 ======================================== */
@@ -19,7 +18,7 @@ const slot3 = document.getElementById("slot3");
 const next = document.getElementById("skip");
 const input = document.getElementById("answer");
 const scoreText = document.getElementById("scoreText");
-const hintText = document.getElementById("hintText");
+const hintText = document.getElementById("hint");
 
 /* ====================================
 Getting the data for each game
@@ -39,11 +38,18 @@ window.onload = async function () {
         const tree = await getData();
         if (!tree) {
             loadingEl.querySelector("p").textContent = "Aucune donnée disponible.";
+            window.location.reload();
             return;
         }
 
         loadPictures(tree);
+        document.getElementById("title").innerHTML = `TreeGuessr (<span class="emoji">${getSelectedEmoji()}</span>)`;
+        document.getElementById("round").textContent = localStorage.getItem("round") + "/5";
 
+        tree.aliases.forEach((item) => {
+            console.log(item)
+        })
+        
         for (let i = 0; i < tree.aliases.length; i++) {
             console.log(tree.aliases[i]);
         }
@@ -79,58 +85,94 @@ next.addEventListener("click", function () {
     window.location.href="result/result.html";
 })
 
+
+/* ====================================
+Guess functionality
+======================================== */
+
 input.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        const userGuess = input.value.trim().toLowerCase();
-        if (!userGuess) return;
+        guess();
+    }
+});
 
-        const mainName = answer.frenchName.toLowerCase();
-        const aliases = answer.aliases || [];
+// Internal logic of the game, guess the input and compares to all the aliases.
+function guess() {
+    const userGuess = input.value.trim().toLowerCase();
+    if (!userGuess) return;
 
-        const isCorrect = (userGuess === mainName) ||
-            aliases.some(alias => alias.toLowerCase() === userGuess);
+    const mainName = answer.frenchName.toLowerCase();
+    const aliases = answer.aliases || [];
 
-        if (isCorrect) {
-            if (window.triggerShake) {
-                window.triggerShake({
-                    tint: 'rgba(74, 222, 128, 0.2)', // Soft Green
-                    intensity: '0px'
+    const isCorrect = (userGuess === mainName) ||
+        aliases.some(alias => alias.toLowerCase() === userGuess);
+
+    if (isCorrect) {
+        if (window.triggerShake) {
+            window.triggerShake({
+                tint: 'rgba(74, 222, 128, 0.2)', // Soft Green
+                intensity: '0px'
+            });
+        }
+        localStorage.setItem("currentTree", JSON.stringify(answer));
+        localStorage.setItem("score", score + roundScore);
+
+        if (tries === 0) {
+            const defaults = {
+                spread: 360,
+                ticks: 100,
+                gravity: 0,
+                decay: 0.94,
+                startVelocity: 30,
+            };
+
+            function shoot() {
+                confetti({
+                    ...defaults,
+                    particleCount: 30,
+                    scalar: 1.2,
+                    shapes: ["circle", "square"],
                 });
             }
+
+            setTimeout(shoot, 0);
+            setTimeout(shoot, 100);
+            setTimeout(shoot, 200);
+
+        }
+
+        setTimeout(() => {
+            window.location.href = "result/result.html";
+        }, 1000);
+
+    } else {
+        if (window.triggerShake) {
+            window.triggerShake();
+        }
+
+        tries++;
+        input.value = "";
+        updateScore(-1000); // Remove 1000 points at each try
+
+        if (tries >= 2) {
+            hintText.classList.remove("is-hidden");
+            let hint = answer.scientificName.split(' ')[0]
+            hintText.textContent = "Indice: " + hint
+            console.log("hint")
+        }
+
+        if (tries >= 5) {
             localStorage.setItem("currentTree", JSON.stringify(answer));
-            localStorage.setItem("score", score + roundScore);
+            localStorage.setItem("score", 0);
 
             setTimeout(() => {
                 window.location.href = "result/result.html";
             }, 400);
-
-        } else {
-            if (window.triggerShake) {
-                window.triggerShake();
-            }
-
-            tries++;
-            input.value = "";
-            updateScore(-1000);
-
-            if (tries >= 2) {
-                hintText.classList.remove("is-hidden");
-                let hint = answer.scientificName.split(' ')[0]
-                hintText.textContent = "Indice: " + hint
-            }
-
-            if (tries >= 5) {
-                localStorage.setItem("currentTree", JSON.stringify(answer));
-                localStorage.setItem("score", 0);
-
-                setTimeout(() => {
-                    window.location.href = "result/result.html";
-                }, 400);
-            }
         }
     }
-});
+}
 
+// Update the score and color of the score display
 function updateScore(points) {
     roundScore += points;
     scoreText.innerText = roundScore;
@@ -139,36 +181,29 @@ function updateScore(points) {
     if (roundScore === 1000) scoreText.style.color = "#ff0000"
 }
 
-// SUGGESTIONS
+/* ====================================
+SUGGESTIONS
+======================================== */
 
-/* ================== CONFIG & STATE ================== */
 let CANDIDATES = [];
 const suggestionsEl = document.getElementById("suggestions");
-const answerInput = document.getElementById("answer"); // Ensure your HTML ID matches
+const answerInput = document.getElementById("answer");
 let activeIndex = -1;
 
-/* ================== DATA LOADING ================== */
-
-/**
- * Loads the aliases from the text file.
- * Path is relative to the URL of game.html
- */
+// Loads data
 async function loadAliases() {
     try {
-        const response = await fetch("../data/aliases_WE.txt");
+        const response = await fetch("../data/aliases/aliases_WE.txt");
         if (!response.ok) throw new Error("Could not find aliases_WE.txt");
 
         const text = await response.text();
 
-        // Process lines: Trim, remove empty, and remove "None"
         const list = text
             .split(/\r?\n/)
             .map(line => line.trim())
             .filter(line => line && line !== "None");
 
-        // Set the global CANDIDATES array with unique values
         CANDIDATES = [...new Set(list)];
-        console.log(`Loaded ${CANDIDATES.length} tree aliases.`);
 
         // Start game logic once data is ready
         setupEventListeners();
@@ -177,11 +212,10 @@ async function loadAliases() {
     }
 }
 
-/* ================== SUGGESTION LOGIC ================== */
-
+// Suggestion logic
 function hideSuggestions() {
     suggestionsEl.classList.add("is-hidden");
-    suggestionsEl.innerHTML = ""; // Clear list
+    suggestionsEl.innerHTML = "";
     activeIndex = -1;
 }
 
@@ -193,7 +227,6 @@ function showSuggestions(list) {
         li.textContent = text;
         li.dataset.value = text;
 
-        // Use mousedown to ensure it fires before the input 'blur'
         li.addEventListener("mousedown", (e) => {
             e.preventDefault();
             answerInput.value = text;
@@ -204,7 +237,6 @@ function showSuggestions(list) {
 }
 
 /* ================== EVENT LISTENERS ================== */
-
 function setupEventListeners() {
     // Input monitoring for suggestions
     answerInput.addEventListener("input", () => {
@@ -254,6 +286,13 @@ function setupEventListeners() {
         }
     });
 
+    // Add the clicked suggestion to the guess input.
+    suggestionsEl.addEventListener("click", (e) => {
+        e.preventDefault();
+        const picked = items[activeIndex]?.dataset.value;
+        if (picked) answerInput.value = picked;
+    })
+
     // Hide suggestions when clicking outside
     document.addEventListener("click", (e) => {
         if (!suggestionsEl.contains(e.target) && e.target !== answerInput) {
@@ -295,4 +334,41 @@ function levenshtein(a, b) {
 function similarity(a, b) {
     const maxLen = Math.max(normalizeStr(a).length, normalizeStr(b).length) || 1;
     return 1 - (levenshtein(a, b) / maxLen);
+}
+
+// Display in the title which area is chosen
+function getSelectedEmoji() {
+    let selectedArea = localStorage.getItem("selectedArea");
+
+    switch (selectedArea) {
+        case "western-europe":
+            return "🇪🇺";
+        case "central-europe":
+            return "🌲";
+        case "mediterranean-europe":
+            return "🌞";
+        case "northern-europe":
+            return "❄️";
+        case "caucasus":
+            return "🏔️";
+        case "north-africa":
+            return "🏜️";
+        case "african-savanna":
+            return "🐘";
+        case "afrotropical":
+            return "🌴";
+        case "african-highlands":
+            return "🌄";
+        case "west-central-asia":
+            return "🪾";
+        case "east-asia":
+            return "🌸";
+        case "south-sea-asia":
+            return "🥥";
+        case "north-america":
+            return "🍁";
+        case "neotropics":
+            return "🦜";
+
+    }
 }

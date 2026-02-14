@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* =======================
-   Root Variables
-======================= */
+        Root Variables
+        ======================= */
         :root {
             --bg-1: hsl(222 47% 11%);
             --bg-2: hsl(215 25% 18%);
@@ -175,28 +175,41 @@
             .cta, .area-btn, .lang-btn { transition: none; }
         }
 
-        .high-score-container {
-            display: inline-flex;
+        .score-container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
             align-items: center;
-            gap: 1.5rem;
-            margin-top: 0.5rem;
-            padding: 1.5rem 2rem;
+            gap: 1rem 2rem;
         }
 
-        .high-score {
-            font-size: 3.2rem;
+        .score {
+            font-size: 2.5rem;
             font-weight: 700;
             color: #FFFFFF;
             text-shadow: 0 2px 12px hsl(0 0% 0% / .35);
             padding-right: 8rem;
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .high-score {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-shadow: 0 2px 12px hsl(0 0% 0% / .35);
+            margin-top: auto;
+            grid-column: 1;
+            grid-row: 2;
+
+            justify-self: flex-start;
         }
 
         .cta-small {
-            font-size: 2em;
-            padding: 0.8rem 2rem;
+            grid-column: 2;
+            grid-row: 1 / span 2; /* spans both rows */
+            align-self: center;   /* vertical centering */
         }
-
-
     </style>
 </head>
 
@@ -206,9 +219,12 @@
         <h1>Tree Guessr</h1>
         <p class="subtitle">La partie est finie. Entrainez vous sur d'autres régions, sur d'autres arbres!</p>
 
-        <div class="high-score-container">
-            <div class="high-score" id="scoreText">
+        <div class="score-container">
+            <div class="score" id="scoreText">
                 Score : 0
+            </div>
+            <div class="high-score" id="highScoreText">
+                ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ High score: 0
             </div>
             <a href="../../index.html" class="cta cta-small" aria-label="Rejouer à Tree Guessr">
                 <span class="icon" aria-hidden="true">🌳</span>
@@ -219,14 +235,58 @@
 </main>
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+
 <script>
     let score = parseInt(localStorage.getItem("score"), 10);
+    let highScore = parseInt(localStorage.getItem("highScore"), 10);
 
     window.onload = function() {
         document.getElementById("scoreText").textContent = "Score: " + score + "/25000";
+
+        /* ====================================
+        HIGHSCORE LOGIC
+        ======================================== */
+        if (score >= highScore) {
+            localStorage.setItem("highScore", score);
+            highScore = score;
+
+            //Confettis
+            const duration = 5000,
+                animationEnd = Date.now() + duration,
+                defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+
+                // since particles fall down, start a bit higher than random
+                confetti(
+                    Object.assign({}, defaults, {
+                        particleCount,
+                        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                    })
+                );
+                confetti(
+                    Object.assign({}, defaults, {
+                        particleCount,
+                        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                    })
+                );
+                }, 250);
+        }
+
+        document.getElementById("highScoreText").textContent = " ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ Meilleur score: " + highScore;
     }
-
-
 </script>
 
 </html>

@@ -18,18 +18,51 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 0rem;
+}
+
+#content {
+    transform: translateY(-2rem);
 }
 
 h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     background: linear-gradient(90deg, var(--accent), white);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    padding-bottom: 20px;
 }
+
+h1 .emoji {
+    display: inline-block;
+    background: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+    filter: none !important;
+}
+
+.title-row {
+    display: flex;
+    justify-content: space-between; /* pushes them to opposite ends */
+    align-items: center; /* vertically aligns them */
+
+}
+
+.title-row h1,
+.title-row h2 {
+    margin: 0; /* remove default spacing */
+}
+
+h2 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    padding-bottom: 10px;
+}
+
 
 .gallery {
     display: grid;
@@ -37,7 +70,7 @@ h1 {
     gap: 2rem;
     width: 100%;
     max-width: 1280px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .slot {
     background: var(--card-bg);
@@ -74,6 +107,7 @@ h1 {
     place-items: center;
     width: 100%;
     max-width: 420px;
+    margin-top: 0.5rem;
 }
 
 input[type="text"] {
@@ -129,7 +163,7 @@ input[type="text"]:focus { box-shadow: 0 0 0 3px var(--accent); }
 
 #suggestions {
     list-style: none;
-    margin: 0 0 0.5rem 0;      /* sits just above the input */
+    margin: 0 0 0 0.5rem;
     padding: 0;
     width: 100%;
     max-width: 420px;
@@ -173,6 +207,7 @@ input[type="text"]:focus { box-shadow: 0 0 0 3px var(--accent); }
     justify-content: center; /* Center the whole group */
     gap: 1.2rem;
     width: 100%;
+    position: relative;
 }
 
 /* Score: Fixed width so it doesn't jump when numbers change */
@@ -199,11 +234,25 @@ input[type="text"] {
 }
 
 /* Ensure suggestions stay aligned with the input box */
-#suggestions {
+.input-wrapper {
+    position: relative;
     width: 100%;
-    max-width: 450px;
-    margin-top: -0.5rem; /* Pull up towards the input */
+    max-width: 420px;
 }
+
+#answer {
+    width: 100%;
+}
+
+#suggestions {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
 
 /* Loader container covers viewport */
 #loading {
@@ -235,22 +284,26 @@ input[type="text"] {
     box-shadow: none;             /* no heavy shadow */
 }
 
-/* Spinner circle */
-.spinner {
-    width: 120px;
-    height: 120px;
-    border: 10px solid rgba(255,255,255,0.15);
-    border-top: 10px solid var(--accent);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3), 0 0 10px var(--bg);
+/* Tree loader */
+svg {
+    width: 20%;
+    height: 20%;
+    filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+    padding-bottom: 20px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+svg path {
+    stroke-dasharray: 150; /* path length */
+    stroke-dashoffset: 150;
+    animation: draw 3s linear infinite;
 }
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 
 /* Loading text */
 .spinner-card p {

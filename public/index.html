@@ -54,13 +54,13 @@
                     <li data-value="north-africa" data-tooltip="🇲🇦 | 🇩🇿 | 🇹🇳">🏜️ Afrique du Nord</li>
                     <li data-value="african-savanna" data-tooltip="🇸🇳 | 🇲🇱 | 🇧🇫 | 🇳🇬 | 🇰🇪 | 🇹🇿 | 🇿🇲 | 🇿🇼 | 🇧🇼 | 🇿🇦">🐘 Savanne</li>
                     <li data-value="afrotropical" data-tooltip="🇨🇲 | 🇬🇦 | 🇨🇬 | 🇨🇩 | 🇨🇮">🌴 Jungles africaines</li>
-                    <li data-value="african-highlands" data-tooltip="🇪🇹 | 🇺🇬 | 🇷🇼">⛰️ Hauts plateaux d'Afrique</li>
+                    <li data-value="african-highlands" data-tooltip="🇪🇹 | 🇺🇬 | 🇷🇼">🌄 Hauts plateaux d'Afrique</li>
 
                     <li class="divider"><span>Asia</span></li>
 
                     <li data-value="west-central-asia" data-tooltip="🇮🇷 | 🇮🇶 | 🇯🇴 | 🇰🇿 | 🇺🇿 | 🇹🇲">🪾 Asie du centre</li>
-                    <li data-value="east-asia" data-tooltip="🇨🇳 | 🇯🇵 | 🇰🇷 | 🇰🇵">🍂 Asie de l'Est</li>
-                    <li data-value="south-sea-asia" data-tooltip="🇮🇳 | 🇧🇩 | 🇹🇭 | 🇻🇳 | 🇲🇾 | 🇮🇩 | 🇵🇭">🌴 Tropiques d'Asie du Sud</li>
+                    <li data-value="east-asia" data-tooltip="🇨🇳 | 🇯🇵 | 🇰🇷 | 🇰🇵">🌸 Asie de l'Est</li>
+                    <li data-value="south-sea-asia" data-tooltip="🇮🇳 | 🇧🇩 | 🇹🇭 | 🇻🇳 | 🇲🇾 | 🇮🇩 | 🇵🇭">🥥 Tropiques d'Asie du Sud</li>
 
                     <li class="divider"><span>Americas</span></li>
 
@@ -77,18 +77,38 @@
 </main>
 
 <script>
+
+    console.log("==========Notice à l'utilisateur==========")
+    console.log("Il manque encore un peu de filtrage de données, certaines photos n'apparaitront pas, rechargez la page.")
+
+    /* ====================================
+    Declare all UI elements
+    ======================================== */
     const areaSelect = document.getElementById("areaSelect");
     const button = document.getElementById("playBtn");
     const areaButton = document.getElementById("areaBtn");
     const label = areaSelect.querySelector(".area-label");
     const items = areaSelect.querySelectorAll(".area-menu li[data-value]");
 
+    // Setup local storage values
     localStorage.setItem("score", 0);
 
+    if (localStorage.getItem("highScore") == null) {
+        localStorage.setItem("highScore", 0);
+    }
+
+    document.getElementById("highScore").textContent = "Meilleur socre : " + localStorage.getItem("highScore");
+
+    /* ====================================
+    LAUNCH GAME
+    ======================================== */
     button.addEventListener("click", () => {
         localStorage.setItem("round", 1);
-        console.log(localStorage.getItem("round"));
-        window.location.href = "/game/game.html";
+
+        const selectedArea = localStorage.getItem("selectedArea") || "western-europe";
+        localStorage.setItem("selectedArea", selectedArea);
+
+        window.location.href = `/game/game.html?area=${selectedArea}`;
     })
 
     // Toggle dropdown
@@ -105,27 +125,16 @@
             label.textContent = item.textContent;
             areaSelect.classList.remove("open");
             areaSelect.dataset.selected = item.dataset.value;
+
+            localStorage.setItem("selectedArea", item.dataset.value);
         });
     });
 
-    // Click outside → close
+    // Close when clicking outside
     document.addEventListener("click", () => areaSelect.classList.remove("open"));
 
-    // Close on ESC
     document.addEventListener("keydown", (e) => {
         if(e.key === "Escape") areaSelect.classList.remove("open");
-    });
-
-    const languageSelectTop = document.getElementById("languageSelect");
-    const langBtnTop = languageSelectTop.querySelector(".lang-btn");
-
-    langBtnTop.addEventListener("click", (e) => {
-        e.stopPropagation();
-        languageSelectTop.classList.toggle("open");
-    });
-
-    document.addEventListener("click", () => {
-        languageSelectTop.classList.remove("open");
     });
 
     const areaItems = document.querySelectorAll(".area-menu li[data-value]");
@@ -153,6 +162,21 @@
         });
     });
 
+    /* ====================================
+    LANGUAGE SELECTION
+    ======================================== */
+
+    const languageSelectTop = document.getElementById("languageSelect");
+    const langBtnTop = languageSelectTop.querySelector(".lang-btn");
+
+    langBtnTop.addEventListener("click", (e) => {
+        e.stopPropagation();
+        languageSelectTop.classList.toggle("open");
+    });
+
+    document.addEventListener("click", () => {
+        languageSelectTop.classList.remove("open");
+    });
 </script>
 </body>
 </html>
