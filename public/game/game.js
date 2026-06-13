@@ -1,9 +1,14 @@
 import { getData} from "../get_trees.js";
+import { Chronometer } from "./chronometer.js"
 // GLOBAL VARIABLES
 
 let tries = 0;
 let roundScore = 5000;
 let answer;
+
+const chrono = new Chronometer();
+
+let mode = localStorage.getItem("mode");
 
 let score = parseInt(localStorage.getItem("score"), 10);
 
@@ -43,18 +48,50 @@ window.onload = async function () {
         }
 
         loadPictures(tree);
-        document.getElementById("title").innerHTML = `TreeGuessr (<span class="emoji">${getSelectedEmoji()}</span>)`;
-        document.getElementById("round").textContent = localStorage.getItem("round") + "/5";
+        answer = tree;
 
-        tree.aliases.forEach((item) => {
-            console.log(item)
-        })
-        
-        for (let i = 0; i < tree.aliases.length; i++) {
-            console.log(tree.aliases[i]);
+        /* ====================================
+        UI LOGIC
+        ======================================== */
+
+        document.getElementById("title").innerHTML = `TreeGuessr (<span class="emoji">${getSelectedEmoji()}</span>)`;
+
+        // HANDLES UI LOGIC FOR STANDARD MODE
+        if (mode === 'standard') {
+            document.getElementById("round").textContent = localStorage.getItem("round") + "/5";
+        } else {
+            document.getElementById("scoreText").textContent = ' ';
+
+            const title = document.getElementById("title");
+
+            if (mode === 'survival') {
+                next.classList.add("is-hidden");
+
+                document.getElementById("round").textContent = ' '; // DON'T SHOW THE ROUND IF SURVIVAL OR CHRONO
+
+                title.style.background = 'linear-gradient(95deg, hsl(0, 100%, 44%), hsl(0, 92%, 66%) 30%, hsl(0, 87%, 78%) 70%)';
+                title.style.webkitBackgroundClip = 'text';
+                title.style.backgroundClip = 'text';
+                title.style.webkitTextFillColor = 'transparent';
+                title.style.color = 'transparent';
+            }
+
+            if (mode === 'chrono') {
+                setInterval(() => {
+                    document.getElementById("round").textContent = chrono.getFormattedTime();
+                }, 10);
+
+                title.style.background = 'linear-gradient(95deg, hsl(0, 0%, 50%), hsl(0, 0%, 75%) 30%, hsl(0, 0%, 100%) 70%)';
+                title.style.webkitBackgroundClip = 'text';
+                title.style.backgroundClip = 'text';
+                title.style.webkitTextFillColor = 'transparent';
+                title.style.color = 'transparent';
+
+                if (chrono.isPaused) { chrono.resume() } else { chrono.start(); }
+
+            }
         }
 
-        answer = tree;
 
         loadingEl.classList.add("is-hidden");
         contentEl.classList.remove("is-hidden");
@@ -83,6 +120,8 @@ next.addEventListener("click", function () {
     localStorage.setItem("currentTree", JSON.stringify(answer));
 
     window.location.href="result/result.html";
+
+    if (mode === 'chrono') { chrono.pause(); window.location.reload(); }
 })
 
 
@@ -107,68 +146,137 @@ function guess() {
     const isCorrect = (userGuess === mainName) ||
         aliases.some(alias => alias.toLowerCase() === userGuess);
 
-    if (isCorrect) {
-        if (window.triggerShake) {
-            window.triggerShake({
-                tint: 'rgba(74, 222, 128, 0.2)', // Soft Green
-                intensity: '0px'
-            });
-        }
-        localStorage.setItem("currentTree", JSON.stringify(answer));
-        localStorage.setItem("score", score + roundScore);
+    if (mode === 'standard')
+    {
+        /*=====================================
+        STANDARD MODE 🌱
+        ======================================= */
 
-        if (tries === 0) {
-            const defaults = {
-                spread: 360,
-                ticks: 100,
-                gravity: 0,
-                decay: 0.94,
-                startVelocity: 30,
-            };
-
-            function shoot() {
-                confetti({
-                    ...defaults,
-                    particleCount: 30,
-                    scalar: 1.2,
-                    shapes: ["circle", "square"],
+        if (isCorrect) {
+            if (window.triggerShake) {
+                window.triggerShake({
+                    tint: 'rgba(74, 222, 128, 0.2)', // Soft Green
+                    intensity: '0px'
                 });
             }
-
-            setTimeout(shoot, 0);
-            setTimeout(shoot, 100);
-            setTimeout(shoot, 200);
-
-        }
-
-        setTimeout(() => {
-            window.location.href = "result/result.html";
-        }, 1000);
-
-    } else {
-        if (window.triggerShake) {
-            window.triggerShake();
-        }
-
-        tries++;
-        input.value = "";
-        updateScore(-1000); // Remove 1000 points at each try
-
-        if (tries >= 2) {
-            hintText.classList.remove("is-hidden");
-            let hint = answer.scientificName.split(' ')[0]
-            hintText.textContent = "Indice: " + hint
-            console.log("hint")
-        }
-
-        if (tries >= 5) {
             localStorage.setItem("currentTree", JSON.stringify(answer));
-            localStorage.setItem("score", 0);
+            localStorage.setItem("score", score + roundScore);
+
+            if (tries === 0) {
+                const defaults = {
+                    spread: 360,
+                    ticks: 100,
+                    gravity: 0,
+                    decay: 0.94,
+                    startVelocity: 30,
+                };
+
+                function shoot() {
+                    confetti({
+                        ...defaults,
+                        particleCount: 30,
+                        scalar: 1.2,
+                        shapes: ["circle", "square"],
+                    });
+                }
+
+                setTimeout(shoot, 0);
+                setTimeout(shoot, 100);
+                setTimeout(shoot, 200);
+
+            }
 
             setTimeout(() => {
                 window.location.href = "result/result.html";
-            }, 400);
+            }, 1000);
+
+        } else {
+            if (window.triggerShake) {
+                window.triggerShake();
+            }
+
+            tries++;
+            input.value = "";
+            updateScore(-1000); // Remove 1000 points at each try
+
+            if (tries >= 2) {
+                hintText.classList.remove("is-hidden");
+                let hint = answer.scientificName.split(' ')[0]
+                hintText.textContent = "Indice: " + hint
+                console.log("hint")
+            }
+
+            if (tries >= 5) {
+                localStorage.setItem("currentTree", JSON.stringify(answer));
+                localStorage.setItem("score", 0);
+
+                setTimeout(() => {
+                    window.location.href = "result/result.html";
+                }, 400);
+            }
         }
+    }
+    else if (mode === 'survival') {
+
+        /*=====================================
+        SURVIVAL MODE 🐻
+        ======================================= */
+
+        if (isCorrect) {
+            if (window.triggerShake) {
+                window.triggerShake({
+                    tint: 'rgba(74, 222, 128, 0.2)', // Soft Green
+                    intensity: '0px'
+                });
+            }
+
+            localStorage.setItem("currentTree", JSON.stringify(answer));
+
+            setTimeout(() => {
+                window.location.href = "result/result.html";
+            }, 1000);
+
+        } else {
+            if (window.triggerShake) {
+                window.triggerShake();
+            }
+
+            localStorage.setItem("currentTree", JSON.stringify(answer));
+
+            setTimeout(() => {
+                window.location.href = "end/end_survival.html";
+                }, 400);
+        }
+    }
+    else if (mode === 'chrono') {
+
+        /*=====================================
+        CHRONOMETER MODE ⏱️
+        ======================================= */
+
+        if (isCorrect) {
+            if (window.triggerShake) {
+                window.triggerShake({
+                    tint: 'rgba(74, 222, 128, 0.2)', // Soft Green
+                    intensity: '0px'
+                });
+            }
+
+            localStorage.setItem("round", parseInt(localStorage.getItem("round")) + 1);
+
+            chrono.pause();
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 400);
+
+        } else {
+            if (window.triggerShake) {
+                window.triggerShake();
+            }
+        }
+
+
     }
 }
 
@@ -255,35 +363,6 @@ function setupEventListeners() {
 
         if (scored.length) showSuggestions(scored);
         else hideSuggestions();
-    });
-
-    // Keyboard navigation (Arrows, Enter, Escape)
-    answerInput.addEventListener("keydown", (e) => {
-        const open = !suggestionsEl.classList.contains("is-hidden");
-        const items = Array.from(suggestionsEl.querySelectorAll("li"));
-
-        if ((e.key === "ArrowDown" || e.key === "ArrowUp") && open) {
-            e.preventDefault();
-            if (!items.length) return;
-
-            if (e.key === "ArrowDown") activeIndex = (activeIndex + 1) % items.length;
-            else activeIndex = (activeIndex - 1 + items.length) % items.length;
-
-            items.forEach((li, i) => li.classList.toggle("is-active", i === activeIndex));
-            return;
-        }
-
-        if (e.key === "Enter" && open && activeIndex >= 0) {
-            e.preventDefault();
-            const picked = items[activeIndex]?.dataset.value;
-            if (picked) answerInput.value = picked;
-            hideSuggestions();
-        }
-
-        if (e.key === "Escape" && open) {
-            e.preventDefault();
-            hideSuggestions();
-        }
     });
 
     // Add the clicked suggestion to the guess input.

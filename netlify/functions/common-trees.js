@@ -42,10 +42,15 @@ async function getTrefleDetailedData(sciname) {
 
         const rand = arr => arr?.length ? arr[Math.floor(Math.random() * arr.length)].image_url : null;
 
+        const allImages = Object.values(ms.images || {}).flat();
+        const anyImage = rand(allImages);
+
+
         return {
-            image_leaf: rand(ms.images?.leaf),
-            image_habit: rand(ms.images?.habit),
-            image_flower_or_bark: rand(ms.images?.flower) || rand(ms.images?.bark),
+            image_leaf: rand(ms.images?.leaf) || anyImage,
+            image_habit: rand(ms.images?.habit) || anyImage,
+            image_flower_or_bark: rand(ms.images?.flower) || rand(ms.images?.bark) || anyImage,
+
             common_name: full.data.common_name,
             scientific_name: full.data.scientific_name,
             family_common_name: full.data.family_common_name,

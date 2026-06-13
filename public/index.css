@@ -6,9 +6,9 @@
     --bg-2: hsl(215 25% 18%);
     --fg: hsl(210 40% 96%);
     --muted: hsl(215 15% 70%);
-    --accent: hsl(145 60% 45%);
+    --accent: hsl(0, 0%, 33%);
     --accent-2: hsl(88 50% 49%);
-    --ring: hsl(160 100% 85% / .65);
+    --ring: hsla(0, 0%, 68%, 0.65);
     --shadow: 0 10px 30px hsl(160 80% 30% / .35), 0 2px 10px hsl(210 50% 2% / .5);
 }
 
@@ -189,6 +189,94 @@ h1 {
 }
 .area-menu li.selected { background: hsl(160 70% 45% / .35); color: white; }
 
+.area-select { position: relative; z-index: 50; }
+
+.area-btn:hover { filter: brightness(1.1); }
+.area-select.open .area-btn { filter: brightness(1.15); }
+
+.chevron { transition: transform .2s ease; }
+.menu-select.open .chevron { transform: rotate(180deg); }
+
+/* SELECT MODE */
+
+/* MODE SELECT CONTAINER */
+.mode-select {
+    position: relative;
+    z-index: 50;
+}
+
+/* MODE BUTTON */
+.mode-btn {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 1rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid hsl(0 0% 100% / .25);
+    background: linear-gradient(180deg, hsl(0 0% 100% / .15), hsl(0 0% 100% / .05));
+    color: var(--fg);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    backdrop-filter: blur(10px);
+    transition: filter .2s ease;
+}
+
+.mode-btn:hover {
+    filter: brightness(1.1);
+}
+
+.mode-select.open .mode-btn {
+    filter: brightness(1.15);
+}
+
+.mode-select.open .chevron {
+    transform: rotate(180deg);
+}
+
+/* MODE MENU DROPDOWN */
+.mode-menu {
+    position: absolute;
+    top: calc(100% + .75rem);
+    right: 0;
+    min-width: 280px;
+    max-height: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: hsl(215 25% 12% / .97);
+    border: 1px solid hsl(0 0% 100% / .15);
+    border-radius: 16px;
+    padding: .4rem;
+    box-shadow: 0 30px 80px hsl(210 50% 3% / .8);
+    list-style: none;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+}
+
+.mode-select.open .mode-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.mode-menu li {
+    position: relative;
+    padding: .7rem .9rem;
+    border-radius: 10px;
+    font-size: .95rem;
+    cursor: pointer;
+    color: var(--fg);
+}
+
+.mode-menu li.selected {
+    background: hsl(160 70% 45% / .35);
+    color: white;
+}
+
+
 /* Divider */
 .area-menu li.divider {
     position: relative;
@@ -245,64 +333,6 @@ h1 {
     font-weight: 600;
     color: #FFFFFF;
     text-shadow: 0 2px 8px hsl(0 0% 0% / .3);
-}
-
-/* =======================
-   Language Selector Top-Right
-======================= */
-.language-select-top {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 100;
-    display: inline-block;
-}
-
-.lang-btn {
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    border: 1px solid hsl(0 0% 100% / .25);
-    background: linear-gradient(180deg, hsl(0 0% 100% / .15), hsl(0 0% 100% / .05));
-    color: var(--fg);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    backdrop-filter: blur(10px);
-}
-.lang-btn:hover { filter: brightness(1.1); }
-
-.language-select-top .lang-menu {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    right: 0;
-    min-width: 120px;
-    max-height: 150px;
-    overflow-y: auto;
-    background: hsl(215 25% 12% / .97);
-    border: 1px solid hsl(0 0% 100% / .15);
-    border-radius: 12px;
-    padding: 0.25rem 0;
-    list-style: none;
-    opacity: 0;
-    transform: translateY(-6px);
-    pointer-events: none;
-    transition: opacity .18s ease, transform .18s ease;
-}
-.language-select-top.open .lang-menu {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-.language-select-top .lang-menu li {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
-.language-select-top .lang-menu li:hover {
-    background: hsl(160 60% 45% / .25);
 }
 
 /* =======================

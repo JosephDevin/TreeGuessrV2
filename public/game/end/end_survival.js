@@ -1,6 +1,3 @@
-let score = parseInt(localStorage.getItem("score"), 10);
-let mode = localStorage.getItem("mode");
-
 /* =======================
    Data Processing Function
 ======================= */
@@ -43,11 +40,9 @@ function flattenTree(tree) {
 ======================= */
 window.onload = function() {
     let nextBtn = document.getElementById('nextBtn');
-    let round = parseInt(localStorage.getItem("round"), 10);
 
-    if (round >= 5) {
-        nextBtn.textContent = "Finir";
-    }
+    nextBtn.textContent = "Rejouer";
+
     const rawData = localStorage.getItem("currentTree");
     if (!rawData) {
         console.error("No tree found in storage.");
@@ -80,24 +75,10 @@ window.onload = function() {
     rarityEl.style.color = rarity.color;
 
     nextBtn.onclick = () => {
-        const selectedArea = localStorage.getItem("selectedArea") || "whole-world";
-
-        // If game finished
-        if (round >= 5) {
-            window.location.href = "../end/end.html";
-        }
-        else {
-            localStorage.setItem("round", round + 1);
-            window.location.href = `../game.html?area=${selectedArea}`;
-        }
+        window.location.href = "../../index.html";
     };
 
-   document.getElementById('scoreText').textContent = "Score total: " + score + "/" + round*5000;
-
-   if (mode === 'survival') {
-       document.getElementById('scoreText').textContent = 'Série: ' + localStorage.getItem("round");
-   }
-
+    document.getElementById('scoreText').textContent = "Série: " + localStorage.getItem("round");
 }
 
 function getRarity(occurrences) {
