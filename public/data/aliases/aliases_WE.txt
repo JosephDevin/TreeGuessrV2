@@ -1,270 +1,40 @@
-Abiès alba
-Acer campestre
-Acer platanoides
-Aesculus hippocastanum
-Ajonc deurope
-Ajonc épineux
-Alnus glutinosa
-Amaruvier
-Amelanchier ovalis
-Amélanchier à feuilles ovales
-Amélavier
-Argouse
-Aria edulis
 Aubépine blanche
 Aubépine monogyne
-Aubépine à deux styles
-Aubépine à un style
-Aubépine épineuse
-Aulne glutineux
-Aulne noir
-Aulne poisseux
-Aune
-Avelinier
-Avelline
-Baie de genièvre
-Baie de génévrier
-Betula pendula
-Betula pubescens
-Bigarreau
-Bigarreautier
-Bleuet
-Bois de sainte Lucie
-Bois punais
-Bouleau Pleureur
-Bouleau blanc
-Bouleau de marais
-Bouleau pubescent
-Bouleau verruqueux
-Bruyère Cendrée
-Bruyère callune
-Bruyère des marais
-Bruyère quaternée
-Bruyère tétragone
-Bruyère à quatre angles
-Calluna vulgaris
-Callune
-Callune vulgaire
-Calottier
-Carpinus betulus fastigiata
-Carpinus fastigiata
-Castanea sativa
-Cerisier Tardif
-Cerisier boréal
-Cerisier d'automne
-Cerisier de sainte Lucie
-Cerisier des bois
-Cerisier des oiseaux
-Cerisier noir
-Cerisier putiet
-Cerisier sauvage
-Charme commun
-Charme fastigié
-Châtaignier
-Châtaignier commun
-Châtaignier européen
-Chêne
-Chêne Vert
-Chêne d'Amérique
-Chêne pubescent
-Chêne pyramidal
-Chêne pédonculé
-Chêne rouge
-Chêne rouge damérique
-Chêne sessile
-Chênes-verts
-Cornouille
-Cornouiller femelle
-Cornouiller mâle
-Cornouiller sanguin
-Cornus mas
-Cornus sanguinea
-Corylus avellana
-Coudrier
-Crataegus laevigata
-Crataegus monogyna
-Crataegus oxyacantha
-Cytisus scoparius
-Erica cinerea
-Erica tetralix
-Euonymus europaeus
-Fagus sylvatica
-Faux Bois de sainte Lucie
-Faux Platane
-Faux Sycomore
-Faux acacia
-Faux merisier
-Faux sapin
-Fayard
-Framboise
-Fraxinus excelsior
-Frêne commun
-Frêne européen
-Frêne élevé
-Fusain deurope
-Genista anglica
-Genièvre
-Gentil sapin
-Genévrier
-Genévrier commun
-Genêt dangleterre
-Genêt à balais
-Gojeutier
-Grand Ajonc
-Grande pimprenelle
-Guigne
-Hippophae rhamnoides
-Houx
-Hêtre
-Hêtre commun
-Hêtre d'Europe
-Hêtre européen
+Aubépine
+Foyard
 Hêtre pourpre
-If
-If commun
-If d'Europe
-If européen
-If à baies
-Ilex aquifolium
-Iseron
-Juniperus communis
-Langue d'oiseau
-Larix decidua
-Laurelle
-Laurier cerise
-Laurier de Trébizonde
-Laurier du Caucase
-Laurier palme
-Laurier putier
-Laurière
-Main-découpée
-Marronier
-Marronier d'inde
-Marronnier commun
-Merisier
-Merisier à grappes
-Myrtille
-Myrtille commune
-Mélèze commun
-Mélèze d'Europe
-Mûrier des haies
-Mûrier sauvage
-Noisetier
+Hêtre commun
+Frêne élevé
+Frêne commun
+Erable sycomore
+Chêne commun
 Noisetier commun
-Noyer
-Noyer commun
-Noyer commun, noyer royal
-Noyer royal
-Olivier de Normandie
-Orme blanc
-Orme champêtre
-Orme de montagne
-Ormeau
-Pesse
-Petit Orme
-Petit marsault
-Peuplier noir
-Peuplier tremble
-Pin d'Écosse
-Pin de Riga
-Pin du Nord
-Pin pleureur
-Pin sylvestre
-Pinus sylvestris
-Populus nigra
-Populus tremula
+Noisetier
 Prunelier
-Prunus avium
-Prunus laurocerasus
-Prunus mahaleb
-Prunus padus
-Prunus serotina
-Prunus spinosa
-Putet
-Puègne blanche
-Qneu
-Quercus Petraea
-Quercus ballota
-Quercus borealis
-Quercus humilis
-Quercus ilex
-Quercus pedunculata
-Quercus pubescens
-Quercus rotundifolia
-Quercus sessiliflora
-Quénot
-Rhododendron ponticum
-Robinia pseudacacia
-Robinier faux-acacia
-Ronce bleue
-Ronce commune
-Ronce des bois
-Ronce des haies
-Ronce ligneuse
-Ronce à feuilles d'Orme
-Rosa canina
-Rosa pimpinellifolia
-Rosa rugosa
-Rosa spinosissima
-Rosier des chiens
-Rosier des haies
-Rosier pimprenelle
-Rosier rugueux
-Rosier à feuilles de pimprenelle
-Rubus caesius
-Rubus fruticosus
-Rubus idaeus
-Rubus ulmifolius
-Salix alba
-Salix atrocinerea
-Salix aurita
-Salix caprea
-Salix cinerea
-Salix repens
-Sanguisorba major
-Sanguisorba officinalis
-Sanguisorbe
-Sanguisorbe officinale
-Sapin argenté
-Sapin blanc
-Sapin commun
-Sapin noir
-Sapin pectiné
-Sapin rouge
-Sapinette
-Sarothamne
-Sarothamnus scoparius
-Saule blanc
-Saule cendré
-Saule marsault
-Saule rampant
-Saule à oreillette
+Cornouiller sanguin
+Houx commun
+Houx
 Sorbier des oiseleurs
-Sorbus aucuparia
-Sérente
-Taxus baccata
-Tilia platiphyllos
-Tilleul à feuilles larges
-Tilleul à grandes feuilles
-Tilleul à larges feuilles
-Torminalis glaberrima
+Aulne noir
+Aulne glutineux
+Erable champetre
+Bouleau Pleureur
+bouleau verruqueux
+Bouleau blanc
+Charme
+Charme communn
+Pin d'Ecosse
+Pin sylvestre
+Pin de Riga
+Cerisier des oiseaux
+Cerisier sauvage
+Genevrier
+Châtaignier européen
+Châtaignier commun
+Chataignier
+Ormeau
+Petit Orme
 Tremble
-Ulex europaeus
-Ulmus minor
-Ulmus montana
-Vaccinium myrtillus
-Verne
-Vuargne
-Yeuze
-Écalonnier
-Églantier des chiens
-Épicéa commun
-Épicéa à poix
-Épine blanche
-Épine noire
-Épinette de Norvège
-Érable champêtre
-Érable de Norvège
-Érable de montagne
-Érable plane
-Érable sycomore
+Peuplier tremble
+Chêne rouvre
+Chêne sessile
