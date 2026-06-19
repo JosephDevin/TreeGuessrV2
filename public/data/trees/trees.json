@@ -4,843 +4,537 @@
     {
       "scientificName": "Crataegus monogyna",
       "family": "Rosaceae",
-      "occurrences": 870907
+      "occurrences": 870907,
+      "aliases": ["Aubépine blanche", "Aubépine monogyne", "Aubépine"
+      ]
     },
     {
       "scientificName": "Fagus sylvatica",
       "family": "Fagaceae",
-      "occurrences": 633254
+      "occurrences": 633254,
+      "aliases": [
+        "Foyard", "Hêtre pourpre", "Hêtre commun"
+      ]
     },
     {
       "scientificName": "Fraxinus excelsior",
       "family": "Oleaceae",
-      "occurrences": 768650
+      "occurrences": 768650,
+      "aliases": [
+        "Frêne élevé", "Frêne commun"
+      ]
     },
     {
       "scientificName": "Acer pseudoplatanus",
       "family": "Sapindaceae",
-      "occurrences": 528766
+      "occurrences": 528766,
+      "aliases": [
+        "Erable sycomore", "Érable sycomore"
+      ]
+
     },
     {
       "scientificName": "Quercus robur",
       "family": "Fagaceae",
-      "occurrences": 709448
+      "occurrences": 709448,
+      "aliases": [
+        "Chêne commun"
+      ]
     },
     {
       "scientificName": "Corylus avellana",
       "family": "Betulaceae",
-      "occurrences": 716604
+      "occurrences": 716604,
+      "aliases": [
+        "Noisetier commun", "Noisetier"
+      ]
     },
     {
       "scientificName": "Prunus spinosa",
       "family": "Rosaceae",
-      "occurrences": 594203
+      "occurrences": 594203,
+      "aliases": [
+        "Prunelier"
+      ]
     },
     {
       "scientificName": "Cornus sanguinea",
       "family": "Cornaceae",
-      "occurrences": 491989
+      "occurrences": 491989,
+      "aliases": [
+        "Cornouiller sanguin"
+      ]
     },
     {
       "scientificName": "Ilex aquifolium",
       "family": "Aquifoliaceae",
-      "occurrences": 465935
+      "occurrences": 465935,
+      "aliases": [
+        "Houx commun", "Houx"
+      ]
     },
     {
       "scientificName": "Sorbus aucuparia",
       "family": "Rosaceae",
-      "occurrences": 439524
+      "occurrences": 439524,
+      "aliases": [
+        "Sorbier des oiseleurs"
+      ]
     },
     {
       "scientificName": "Alnus glutinosa",
       "family": "Betulaceae",
-      "occurrences": 456620
+      "occurrences": 456620,
+      "aliases": [
+        "Aulne noir", "Aulne glutineux"
+      ]
     },
     {
       "scientificName": "Acer campestre",
       "family": "Sapindaceae",
-      "occurrences": 402957
+      "occurrences": 402957,
+      "aliases": [
+        "Erable champêtre", "Érable champêtre"
+      ]
     },
     {
       "scientificName": "Betula pendula",
       "family": "Betulaceae",
-      "occurrences": 381940
+      "occurrences": 381940,
+      "aliases": [
+        "Bouleau pleureur","Bouleau verruqueux", "Bouleau blanc"
+      ]
     },
     {
       "scientificName": "Carpinus betulus",
       "family": "Betulaceae",
-      "occurrences": 357474
+      "occurrences": 357474,
+      "aliases": [
+        "Charme", "Charme commun"
+      ]
     },
     {
       "scientificName": "Pinus sylvestris",
       "family": "Pinaceae",
-      "occurrences": 310434
+      "occurrences": 310434,
+      "aliases": [
+        "Pin d'Ecosse", "Pin sylvestre, Pin de Riga"
+      ]
     },
     {
       "scientificName": "Prunus avium",
       "family": "Rosaceae",
-      "occurrences": 305241
+      "occurrences": 305241,
+      "aliases": [
+        "Cerisier des oiseaux", "Cersier sauvage"
+      ]
     },
     {
       "scientificName": "Juniperus communis",
       "family": "Cupressaceae",
-      "occurrences": 285321
+      "occurrences": 285321,
+      "aliases": [
+        "Genevrier", "Genévrier"
+      ]
     },
     {
       "scientificName": "Castanea sativa",
       "family": "Fagaceae",
-      "occurrences": 252329
+      "occurrences": 252329,
+      "aliases": [
+        "Châtaignier européen", "Châtaigner commun", "Châtaigner"
+      ]
     },
     {
       "scientificName": "Ulmus minor",
       "family": "Ulmaceae",
-      "occurrences": 236559
+      "occurrences": 236559,
+      "aliases": [
+        "Ormeau", "Petit Orme"
+      ]
     },
     {
       "scientificName": "Populus tremula",
       "family": "Salicaceae",
-      "occurrences": 226402
+      "occurrences": 226402,
+      "aliases": [
+        "Tremble", "Peuplier tremble"
+      ]
     },
     {
       "scientificName": "Quercus petraea",
       "family": "Fagaceae",
-      "occurrences": 227203
+      "occurrences": 227203,
+      "aliases": [
+        "Chêne rouvre", "Chêne sessile"
+      ]
     },
     {
       "scientificName": "Robinia pseudoacacia",
       "family": "Fabaceae",
-      "occurrences": 231200
+      "occurrences": 231200,
+      "aliases": [
+        "Faux acacia", "Robinier", "Robinier faux-acacia"
+      ]
     },
     {
       "scientificName": "Ulex europaeus",
       "family": "Fabaceae",
-      "occurrences": 213710
+      "occurrences": 213710,
+      "aliases": [
+        "Ajonc", "Ajonc d'Europe"
+      ]
     },
     {
       "scientificName": "Quercus pubescens",
       "family": "Fagaceae",
-      "occurrences": 192451
+      "occurrences": 192451,
+      "aliases": [
+        "Chêne pubescent"
+      ]
     },
     {
       "scientificName": "Rubus idaeus",
       "family": "Rosaceae",
-      "occurrences": 189937
+      "occurrences": 189937,
+      "aliases": [
+        "Framboise", "Framboisier"
+      ]
     },
     {
       "scientificName": "Picea abies",
       "family": "Pinaceae",
-      "occurrences": 168863
+      "occurrences": 168863,
+      "aliases": [
+        "Sapin rouge", "Epicéa commun", "Epicéa"
+      ]
     },
     {
       "scientificName": "Betula pubescens",
       "family": "Betulaceae",
-      "occurrences": 184736
+      "occurrences": 184736,
+      "aliases": [
+        "Bouleau pubescent", "Bouleau de marais"
+      ]
     },
     {
       "scientificName": "Salix alba",
       "family": "Salicaceae",
-      "occurrences": 194716
+      "occurrences": 194716,
+      "aliases": [
+        "Saule blanc"
+      ]
     },
     {
       "scientificName": "Rubus fruticosus",
       "family": "Rosaceae",
-      "occurrences": 158428
+      "occurrences": 158428,
+      "aliases": [
+        "Mûrier", "Mûrier sauvage", "Ronce"
+      ]
     },
     {
       "scientificName": "Juglans regia",
       "family": "Juglandaceae",
-      "occurrences": 139089
+      "occurrences": 139089,
+      "aliases": [
+        "Noyer", "Noyer commun"
+      ]
     },
     {
       "scientificName": "Prunus serotina",
       "family": "Rosaceae",
-      "occurrences": 158547
+      "occurrences": 158547,
+      "aliases": [
+        "Cerisier noir"
+      ]
     },
     {
       "scientificName": "Prunus padus",
       "family": "Rosaceae",
-      "occurrences": 115064
+      "occurrences": 115064,
+      "aliases": [
+        "Merisier à grappes", "Cerisier putiet"
+      ]
     },
     {
       "scientificName": "Acer platanoides",
       "family": "Sapindaceae",
-      "occurrences": 114485
+      "occurrences": 114485,
+      "aliases": [
+        "Erable plane", "Érable plane", "Érable de Norvège", "Erable de Norvège"
+      ]
     },
     {
       "scientificName": "Abies alba",
       "family": "Pinaceae",
-      "occurrences": 120673
+      "occurrences": 120673,
+      "aliases": [
+        "Sapin commun", "Sapin"
+      ]
     },
     {
       "scientificName": "Aesculus hippocastanum",
       "family": "Sapindaceae",
-      "occurrences": 113401
+      "occurrences": 113401,
+      "aliases": [
+        "Marronnier commun", "Marronnier d'Inde", "Marronnier"
+      ]
     },
     {
       "scientificName": "Prunus laurocerasus",
       "family": "Rosaceae",
-      "occurrences": 116971
+      "occurrences": 116971,
+      "aliases": [
+        "Laurier cerise", "Laurier du Caucase"
+      ]
     },
     {
       "scientificName": "Quercus ilex",
       "family": "Fagaceae",
-      "occurrences": 112710
+      "occurrences": 112710,
+      "aliases": [
+        "Chêne vert"
+      ]
     },
     {
       "scientificName": "Torminalis glaberrima",
       "family": "Rosaceae",
-      "occurrences": 105782
+      "occurrences": 105782,
+      "aliases": [
+        "Alisier torminal"
+      ]
     },
     {
       "scientificName": "Amelanchier ovalis",
       "family": "Rosaceae",
-      "occurrences": 100213
+      "occurrences": 100213,
+      "aliases": [
+        "Amelanchier", "Amélavier"
+      ]
     },
     {
       "scientificName": "Crataegus laevigata",
       "family": "Rosaceae",
-      "occurrences": 94197
+      "occurrences": 94197,
+      "aliases": [
+        "Aubépine épineuse"
+      ]
     },
     {
       "scientificName": "Prunus mahaleb",
       "family": "Rosaceae",
-      "occurrences": 93547
+      "occurrences": 93547,
+      "aliases": [
+        "Faux merisier", "Cerisier de Sainte Lucie"
+      ]
     },
     {
       "scientificName": "Taxus baccata",
       "family": "Taxaceae",
-      "occurrences": 90676
+      "occurrences": 90676,
+      "aliases": [
+        "If", "If commun"
+      ]
     },
     {
       "scientificName": "Ulmus glabra",
       "family": "Ulmaceae",
-      "occurrences": 88727
+      "occurrences": 88727,
+      "aliases": [
+        "Orme blanc", "Orme des montagnes"
+      ]
     },
     {
       "scientificName": "Salix aurita",
       "family": "Salicaceae",
-      "occurrences": 89502
+      "occurrences": 89502,
+      "aliases": [
+        "Saule à oreillette"
+      ]
     },
     {
       "scientificName": "Populus nigra",
       "family": "Salicaceae",
-      "occurrences": 89723
-    },
-    {
-      "scientificName": "Rubus ulmifolius",
-      "family": "Rosaceae",
-      "occurrences": 90730
+      "occurrences": 89723,
+      "aliases": [
+        "Peuplier noir"
+      ]
     },
     {
       "scientificName": "Quercus rubra",
       "family": "Fagaceae",
-      "occurrences": 84488
-    },
-    {
-      "scientificName": "Genista tinctoria",
-      "family": "Fabaceae",
-      "occurrences": 78185
+      "occurrences": 84488,
+      "aliases": [
+        "Chêne d'Amerique", "Chêne rouge d'Amerique", "Chêne rouge"
+      ]
     },
     {
       "scientificName": "Populus alba",
       "family": "Salicaceae",
-      "occurrences": 76805
+      "occurrences": 76805,
+      "aliases": [
+        "Peuplier blanc", "Peuplier de Hollande"
+      ]
     },
     {
       "scientificName": "Rhododendron ponticum",
       "family": "Ericaceae",
-      "occurrences": 71840
+      "occurrences": 71840,
+      "aliases": [
+        "Rhododendron pontique", "Rhododendron"
+      ]
     },
     {
       "scientificName": "Larix decidua",
       "family": "Pinaceae",
-      "occurrences": 74659
+      "occurrences": 74659,
+      "aliases": [
+        "Mélèze commun", "Mélèze"
+      ]
     },
     {
       "scientificName": "Tilia platyphyllos",
       "family": "Malvaceae",
-      "occurrences": 70460
-    },
-    {
-      "scientificName": "Genista anglica",
-      "family": "Fabaceae",
-      "occurrences": 63262
+      "occurrences": 70460,
+      "aliases": [
+        "Tilleul à grandes feuilles", "Tilleul à larges feuilles"
+      ]
     },
     {
       "scientificName": "Cornus mas",
       "family": "Cornaceae",
-      "occurrences": 63403
+      "occurrences": 63403,
+      "aliases": [
+        "Cornouiller", "Cornouille"
+      ]
     },
     {
       "scientificName": "Rhododendron ferrugineum",
       "family": "Ericaceae",
-      "occurrences": 62375
+      "occurrences": 62375,
+      "aliases": [
+        "Laurier-rose", "Laurier rose"
+      ]
     },
     {
       "scientificName": "Malus sylvestris",
       "family": "Rosaceae",
-      "occurrences": 57248
+      "occurrences": 57248,
+      "aliases": [
+        "Pommier des bois", "Pommier sauvage"
+      ]
     },
     {
       "scientificName": "Pinus nigra",
       "family": "Pinaceae",
-      "occurrences": 52335
+      "occurrences": 52335,
+      "aliases": [
+        "Pin noir"
+      ]
     },
     {
       "scientificName": "Hibiscus syriacus",
       "family": "Malvaceae",
-      "occurrences": 48102
+      "occurrences": 48102,
+      "aliases": [
+        "Hibiscus", "Hibiscus syriacus"
+      ]
     },
     {
       "scientificName": "Tilia cordata",
       "family": "Malvaceae",
-      "occurrences": 51400
-    },
+      "occurrences": 51400,
+      "aliases": [
+        "Tilleul à petites feuilles"
+      ]},
     {
       "scientificName": "Pseudotsuga menziesii",
       "family": "Pinaceae",
-      "occurrences": 47647
+      "occurrences": 47647,
+      "aliases": [
+        "Pin d'Oregon", "Sapin de Douglas"
+      ]
     },
     {
       "scientificName": "Juniperus oxycedrus",
       "family": "Cupressaceae",
-      "occurrences": 47528
+      "occurrences": 47528,
+      "aliases": [
+        "Genévrier", "Genévrier epineux"
+      ]
     },
     {
       "scientificName": "Acer opalus",
       "family": "Sapindaceae",
-      "occurrences": 46701
+      "occurrences": 46701,
+      "aliases": [
+        "Erable d'Italie", "Érable d'Italie", "Erable à feuilles d'obier", "Érable à feuilles d'obier"
+      ]
     },
     {
       "scientificName": "Prunus cerasifera",
       "family": "Rosaceae",
-      "occurrences": 43098
+      "occurrences": 43098,
+      "aliases": [
+        "Prunier", "Prunier myrobolan"
+      ]
     },
     {
       "scientificName": "Pinus pinaster",
       "family": "Pinaceae",
-      "occurrences": 43664
+      "occurrences": 43664,
+      "aliases": [
+        "Pin maritime", "Pin des Landes"
+      ]
     },
     {
       "scientificName": "Acer negundo",
       "family": "Sapindaceae",
-      "occurrences": 41596
+      "occurrences": 41596,
+      "aliases": [
+        "Erable du Manitoba", "Érable du Manitoba", "Erable negundo", "Érable negundo"
+      ]
     },
     {
       "scientificName": "Malus domestica",
       "family": "Rosaceae",
-      "occurrences": 40570
+      "occurrences": 40570,
+      "aliases": [
+        "Pommier commun", "Pommier"
+      ]
     },
     {
       "scientificName": "Laurus nobilis",
       "family": "Lauraceae",
-      "occurrences": 37826
+      "occurrences": 37826,
+      "aliases": [
+        "Laurier noble", "Laurier"
+      ]
     },
     {
       "scientificName": "Alnus incana",
       "family": "Betulaceae",
-      "occurrences": 37264
-    },
-    {
-      "scientificName": "Acer monspessulanum",
-      "family": "Sapindaceae",
-      "occurrences": 37258
+      "occurrences": 37264,
+      "aliases": [
+        "Aulne blanc", "Aulne de montagne"
+      ]
     },
     {
       "scientificName": "Cercis siliquastrum",
       "family": "Moraceae",
-      "occurrences": 36977
-    },
-    {
-      "scientificName": "Prunus domestica",
-      "family": "Rosaceae",
-      "occurrences": 36847
+      "occurrences": 36977,
+      "aliases": [
+        "Arbre de Judée"
+      ]
     },
     {
       "scientificName": "Fraxinus angustifolia",
       "family": "Oleaceae",
-      "occurrences": 34860
+      "occurrences": 34860,
+      "aliases": [
+        "Frêne du midi"
+      ]
     }
-  ],
-  "central-europe":
-  [
-    [
-      {
-        "scientificName": "Buteo buteo",
-        "occurrences": 14381568,
-        "aliases": [
-          "Buse variable",
-          "buse variable",
-          "Buteo buteo"
-        ]
-      },
-      {
-        "scientificName": "Acer platanoides",
-        "occurrences": 5517936,
-        "aliases": [
-          "Main-découpée",
-          "Faux Sycomore",
-          "Iseron",
-          "Erable plane",
-          "Érable de Norvège",
-          "Acer platanoides",
-          "Erable de Norvège",
-          "érable plane"
-        ]
-      },
-      {
-        "scientificName": "Quercus robur",
-        "occurrences": 5908284,
-        "aliases": [
-          "Chêne pyramidal",
-          "chêne pédonculé",
-          "chêne",
-          "Quercus pedunculata"
-        ]
-      },
-      {
-        "scientificName": "Robinia pseudoacacia",
-        "occurrences": 2611494,
-        "aliases": [
-          "Faux acacia",
-          "Robinia pseudacacia",
-          "Robinier faux-acacia",
-          "Robinia pseudoacacia"
-        ]
-      },
-      {
-        "scientificName": "Cirsium oleraceum",
-        "occurrences": 2104344,
-        "aliases": [
-          "Cirse maraîcher",
-          "Cirsium oleraceum",
-          "Cirse maraicher",
-          "cirse maraîcher"
-        ]
-      },
-      {
-        "scientificName": "Prunus avium",
-        "occurrences": 2287116,
-        "aliases": [
-          "Bigarreaux",
-          "Guignier",
-          "Bigarreautier",
-          "Bigarreau",
-          "Guigne",
-          "Cerisier des bois",
-          "merisier",
-          "Prunus avium",
-          "Cerisier des oiseaux",
-          "Cerisier sauvage"
-        ]
-      },
-      {
-        "scientificName": "Prunus padus",
-        "occurrences": 2386440,
-        "aliases": [
-          "Putet",
-          "Merisier à grappes",
-          "Faux Bois de sainte Lucie",
-          "Amaruvier",
-          "Putier",
-          "Laurier putier",
-          "Prunus padus",
-          "Merisier a grappes",
-          "Cerisier putiet",
-          "Cerisier boréal",
-          "Cerisier À Grappes"
-        ]
-      },
-      {
-        "scientificName": "Chelidonium majus",
-        "occurrences": 1849518,
-        "aliases": [
-          "Herbe aux verrues",
-          "Quélidoine",
-          "Verrucaire",
-          "Kélidoine",
-          "Herbe à verrues",
-          "Chélidoine",
-          "Chelidonium majus",
-          "Chelidoine",
-          "Grande chélidoine"
-        ]
-      },
-      {
-        "scientificName": "Euonymus europaeus",
-        "occurrences": 1905840,
-        "aliases": [
-          "Fusain d'Europe",
-          "fusain deurope",
-          "Euonymus europaeus"
-        ]
-      },
-      {
-        "scientificName": "Rubus idaeus",
-        "occurrences": 3138948,
-        "aliases": [
-          "framboisier",
-          "Rubus idaeus",
-          "Framboise"
-        ]
-      },
-      {
-        "scientificName": "Populus tremula",
-        "occurrences": 1820484,
-        "aliases": [
-          "Tremble",
-          "Populus tremula",
-          "Peuplier tremble"
-        ]
-      },
-      {
-        "scientificName": "Bromus erectus",
-        "occurrences": 974880,
-        "aliases": [
-          "Bromus erectus",
-          "Brome dressé"
-        ]
-      },
-      {
-        "scientificName": "Leontodon hispidus",
-        "occurrences": 1608426,
-        "aliases": [
-          "Leontodon hispidus",
-          "léontodon variable",
-          "Liondent hispide"
-        ]
-      },
-      {
-        "scientificName": "Poterium sanguisorba",
-        "occurrences": 1026828,
-        "aliases": [
-          "Poterium sanguisorba"
-        ]
-      },
-      {
-        "scientificName": "Prunus laurocerasus",
-        "occurrences": 846864,
-        "aliases": [
-          "Laurier cerise",
-          "laurier de Trébizonde",
-          "Laurier du Caucase",
-          "Laurier palme",
-          "Laurier-cerise",
-          "laurelle",
-          "Laurière",
-          "Prunus laurocerasus"
-        ]
-      },
-      {
-        "scientificName": "Trollius europaeus",
-        "occurrences": 730836,
-        "aliases": [
-          "Trollius europaeus",
-          "Trolle d'Europe",
-          "Trolle"
-        ]
-      },
-      {
-        "scientificName": "Neottia ovata",
-        "occurrences": 729828,
-        "aliases": [
-          "Listère à feuilles ovales",
-          "Neottia ovata"
-        ]
-      },
-      {
-        "scientificName": "Marmota marmota",
-        "occurrences": 727290,
-        "aliases": [
-          "Marmota marmota",
-          "Marmotte des Alpes",
-          "Marmotte alpine"
-        ]
-      },
-      {
-        "scientificName": "Carex alba",
-        "occurrences": 394938,
-        "aliases": [
-          "Carex alba"
-        ]
-      },
-      {
-        "scientificName": "Prenanthes purpurea",
-        "occurrences": 386946,
-        "aliases": [
-          "Prénanthe pourpre",
-          "Prénanthès",
-          "Prenanthes purpurea"
-        ]
-      },
-      {
-        "scientificName": "Petasites albus",
-        "occurrences": 451116,
-        "aliases": [
-          "Pétasite blanc",
-          "Petasite blanc",
-          "Petasites albus"
-        ]
-      },
-      {
-        "scientificName": "Buphthalmum salicifolium",
-        "occurrences": 392526,
-        "aliases": [
-          "Buphtalme à feuilles de saule"
-        ]
-      },
-      {
-        "scientificName": "Chaerophyllum hirsutum",
-        "occurrences": 472824,
-        "aliases": [
-          "Cerfeuil hirsute"
-        ]
-      },
-      {
-        "scientificName": "Euphorbia amygdaloides",
-        "occurrences": 359226,
-        "aliases": [
-          "Euphorbia amygdaloides",
-          "Euphorbia silvatica",
-          "euphorbe des bois",
-          "Euphorbe des bois"
-        ]
-      },
-      {
-        "scientificName": "Adenostyles alpina",
-        "occurrences": 353286,
-        "aliases": [
-          "Adenostyles alpina",
-          "Adénostyle des Alpes"
-        ]
-      },
-      {
-        "scientificName": "Knautia dipsacifolia",
-        "occurrences": 351378,
-        "aliases": [
-          "Knautia dipsacifolia"
-        ]
-      },
-      {
-        "scientificName": "Paris quadrifolia",
-        "occurrences": 350568,
-        "aliases": [
-          "Parisette à quatre feuilles",
-          "parisette"
-        ]
-      },
-      {
-        "scientificName": "Asarum europaeum",
-        "occurrences": 506610,
-        "aliases": [
-          "Asarum europaeum",
-          "Asaret d'Europe"
-        ]
-      },
-      {
-        "scientificName": "Carduus defloratus",
-        "occurrences": 340074,
-        "aliases": [
-          "Chardon à pédoncules nus",
-          "Chardon décapité",
-          "Carduus defloratus"
-        ]
-      },
-      {
-        "scientificName": "Melica nutans",
-        "occurrences": 319050,
-        "aliases": [
-          "Mélique penchée",
-          "Melica nutans"
-        ]
-      },
-      {
-        "scientificName": "Viola reichenbachiana",
-        "occurrences": 737280,
-        "aliases": [
-          "Violette de Reichenbach",
-          "violette de reichenbach"
-        ]
-      },
-      {
-        "scientificName": "Polystichum aculeatum",
-        "occurrences": 310230,
-        "aliases": [
-          "Polystichum aculeatum",
-          "Polystic à aiguillons",
-          "Polystic a aiguillons"
-        ]
-      },
-      {
-        "scientificName": "Viola arvensis",
-        "occurrences": 306252,
-        "aliases": [
-          "Violette des champs",
-          "pensée des champs",
-          "Pensée des champs",
-          "Pensee des champs",
-          "Viola arvensis"
-        ]
-      },
-      {
-        "scientificName": "Convolvulus arvensis",
-        "occurrences": 441792,
-        "aliases": [
-          "Convolvulus arvensis",
-          "Liseron des champs",
-          "Vrillée",
-          "liseron des champs"
-        ]
-      },
-      {
-        "scientificName": "Quercus petraea",
-        "occurrences": 468864,
-        "aliases": [
-          "Quercus Petraea",
-          "Chêne rouvre",
-          "Quercus petraea",
-          "Chêne sessile",
-          "Quercus sessiliflora"
-        ]
-      },
-      {
-        "scientificName": "Cornus mas",
-        "occurrences": 125802,
-        "aliases": [
-          "Cornouiller mâle",
-          "Cornouille",
-          "Cornus mas",
-          "Cornouiller male"
-        ]
-      },
-      {
-        "scientificName": "Homogyne alpina",
-        "occurrences": 124380,
-        "aliases": [
-          "Homogyne alpina"
-        ]
-      },
-      {
-        "scientificName": "Agrostis stolonifera",
-        "occurrences": 122760,
-        "aliases": [
-          "Agrostide Stolonifère",
-          "agrostis stolonifère",
-          "Agrostis stolonifera"
-        ]
-      },
-      {
-        "scientificName": "Fragaria viridis",
-        "occurrences": 121860,
-        "aliases": [
-          "Fragaria viridis",
-          "Fraisier vert"
-        ]
-      },
-      {
-        "scientificName": "Betonica officinalis",
-        "occurrences": 112914,
-        "aliases": [
-          "Betonica officinalis"
-        ]
-      },
-      {
-        "scientificName": "Crepis biennis",
-        "occurrences": 111276,
-        "aliases": [
-          "Crepis biennis",
-          "crépis des prés"
-        ]
-      },
-      {
-        "scientificName": "Aposeris foetida",
-        "occurrences": 13086,
-        "aliases": [
-          "Aposeris"
-        ]
-      },
-      {
-        "scientificName": "Crithmum maritimum",
-        "occurrences": 53442,
-        "aliases": [
-          "Crithme",
-          "Criste marine",
-          "Crithme maritime",
-          "Criste-marine",
-          "passe-pierre",
-          "Crithmum maritimum",
-          "Fenouil marin"
-        ]
-      },
-      {
-        "scientificName": "Pistacia lentiscus",
-        "occurrences": 48150,
-        "aliases": [
-          "Arbre au mastic",
-          "Lentisque Pistachier",
-          "Pistachier lentisque",
-          "Pistacia lentiscus"
-        ]
-      },
-      {
-        "scientificName": "Ficus carica",
-        "occurrences": 36882,
-        "aliases": [
-          "Figuier Commun",
-          "Figuier",
-          "figuier comestible",
-          "Ficus carica",
-          "Caprifiguier"
-        ]
-      },
-      {
-        "scientificName": "Paliurus spina-christi",
-        "occurrences": 34830,
-        "aliases": [
-          "Paliurus spina-christi"
-        ]
-      },
-      {
-        "scientificName": "Quercus ilex",
-        "occurrences": 34056,
-        "aliases": [
-          "Yeuse",
-          "Quercus rotundifolia",
-          "Chene vert",
-          "Quercus ilex",
-          "Chêne Vert",
-          "Chênes-vert",
-          "Chênes-verts",
-          "Quercus ballota",
-          "Chênes verts",
-          "Yeuze"
-        ]
-      },
-      {
-        "scientificName": "Olea europaea",
-        "occurrences": 28836,
-        "aliases": [
-          "Bois d'olive noir",
-          "Olivier d'Europe",
-          "olivier européen",
-          "Olivier"
-        ]
-      },
-      {
-        "scientificName": "Elaeagnus angustifolia",
-        "occurrences": 31284,
-        "aliases": [
-          "Olivier de Bohême",
-          "Elaeagnus angustifolia"
-        ]
-      },
-      {
-        "scientificName": "Triticum turgidum",
-        "occurrences": 53190,
-        "aliases": [
-          "Triticum turgidum"
-        ]
-      }
-    ]
   ]
 }

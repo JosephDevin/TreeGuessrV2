@@ -21,43 +21,6 @@
                 <span>Jouer</span>
             </a>
 
-            <div class="area-select" id="areaSelect">
-                <button class="area-btn" type="button" aria-haspopup="listbox" id="areaBtn">
-                    <span class="area-label">🌍 Monde entier</span>
-                    <span class="chevron">▾</span>
-                </button>
-                <ul class="area-menu" role="listbox">
-                    <!-- Whole world -->
-                    <li data-value="whole-world" data-tooltip="Tous...">🌍 Monde entier</li>
-                    <li class="divider"><span>Europe</span></li>
-
-                    <!-- Europe & West Asia -->
-                    <li data-value="western-europe" data-tooltip="🇮🇪 | 🇬🇧 | 🇫🇷 | 🇧🇪 | 🇳🇱 | 🇱🇺">🇪🇺 Europe de l'Ouest</li>
-                    <li data-value="central-europe" data-tooltip="🇩🇪 | 🇨🇭 | 🇦🇹 | 🇵🇱 | 🇨🇿 | 🇸🇰 | 🇭🇺 | 🇸🇮 | 🇭🇷 | 🇷🇴 | 🇧🇬">🌲 Europe Centrale & de l'Est</li>
-                    <li data-value="mediterranean-europe" data-tooltip="🇪🇸 | 🇵🇹 | 🇮🇹 | 🇬🇷 | 🇲🇹">🌞 Europe méditerranéenne</li>
-                    <li data-value="northern-europe" data-tooltip="🇳🇴 | 🇸🇪 | 🇫🇮 | 🇪🇪 | 🇱🇻 | 🇱🇹">❄️ Europe du Nord</li>
-                    <li data-value="caucasus" data-tooltip="🇹🇷 | 🇬🇪 | 🇦🇲 | 🇦🇿">🏔️ Caucase</li>
-
-                    <li class="divider"><span>Africa</span></li>
-
-                    <li data-value="north-africa" data-tooltip="🇲🇦 | 🇩🇿 | 🇹🇳">🏜️ Afrique du Nord</li>
-                    <li data-value="african-savanna" data-tooltip="🇸🇳 | 🇲🇱 | 🇧🇫 | 🇳🇬 | 🇰🇪 | 🇹🇿 | 🇿🇲 | 🇿🇼 | 🇧🇼 | 🇿🇦">🐘 Savanne</li>
-                    <li data-value="afrotropical" data-tooltip="🇨🇲 | 🇬🇦 | 🇨🇬 | 🇨🇩 | 🇨🇮">🌴 Jungles africaines</li>
-                    <li data-value="african-highlands" data-tooltip="🇪🇹 | 🇺🇬 | 🇷🇼">🌄 Hauts plateaux d'Afrique</li>
-
-                    <li class="divider"><span>Asia</span></li>
-
-                    <li data-value="west-central-asia" data-tooltip="🇮🇷 | 🇮🇶 | 🇯🇴 | 🇰🇿 | 🇺🇿 | 🇹🇲">🪾 Asie du centre</li>
-                    <li data-value="east-asia" data-tooltip="🇨🇳 | 🇯🇵 | 🇰🇷 | 🇰🇵">🌸 Asie de l'Est</li>
-                    <li data-value="south-sea-asia" data-tooltip="🇮🇳 | 🇧🇩 | 🇹🇭 | 🇻🇳 | 🇲🇾 | 🇮🇩 | 🇵🇭">🥥 Tropiques d'Asie du Sud</li>
-
-                    <li class="divider"><span>Americas</span></li>
-
-                    <li data-value="north-america" data-tooltip="🇺🇸 | 🇨🇦">🍁 Amerique du Nord</li>
-                    <li data-value="neotropics" data-tooltip="🇲🇽 | 🇬🇹 | 🇨🇴 | 🇧🇷 | 🇵🇪 | 🇪🇨 | 🇧🇴">🦜 Amerique centrale & du Sud</li>
-                </ul>
-            </div>
-
             <div class="mode-select" id="modeSelect">
                 <button class="mode-btn" type="button" aria-haspopup="listbox" id="modeBtn">
                     <span class="mode-label">🌱</span>
@@ -89,11 +52,6 @@
     ======================================== */
     const button = document.getElementById("playBtn");
 
-    const areaSelect = document.getElementById("areaSelect");
-    const areaButton = document.getElementById("areaBtn");
-    const label = areaSelect.querySelector(".area-label");
-    const items = areaSelect.querySelectorAll(".area-menu li[data-value]");
-
     const modeSelect = document.getElementById("modeSelect");
     const modeBtn = document.getElementById("modeBtn");
     const labelMode = modeSelect.querySelector(".mode-label");
@@ -116,37 +74,8 @@
     button.addEventListener("click", () => {
         localStorage.setItem("round", 1);
 
-        const selectedArea = localStorage.getItem("selectedArea") || "western-europe";
-        localStorage.setItem("selectedArea", selectedArea);
-
-        window.location.href = `/game/game.html?area=${selectedArea}`;
+        window.location.href = `/game/game.html`;
     })
-
-    // Toggle dropdown
-    areaButton.addEventListener("click", (e) => {
-        e.stopPropagation();
-        areaSelect.classList.toggle("open");
-    });
-
-    // Select an item
-    items.forEach(item => {
-        item.addEventListener("click", () => {
-            items.forEach(i => i.classList.remove("selected"));
-            item.classList.add("selected");
-            label.textContent = item.textContent;
-            areaSelect.classList.remove("open");
-            areaSelect.dataset.selected = item.dataset.value;
-
-            localStorage.setItem("selectedArea", item.dataset.value);
-        });
-    });
-
-    // Close when clicking outside
-    document.addEventListener("click", () => areaSelect.classList.remove("open"));
-
-    document.addEventListener("keydown", (e) => {
-        if(e.key === "Escape") areaSelect.classList.remove("open");
-    });
 
     const areaItems = document.querySelectorAll(".area-menu li[data-value]");
     let tooltipEl = null;

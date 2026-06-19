@@ -5,7 +5,7 @@ const app = express();
 
 /* ================== CONSTANTS ================== */
 
-const TREFLE_TOKEN = "usr-T5c2j4Ln4fXpHLnAIw2j_prE7KeZasfdSf9nswR9D7s"
+const TREFLE_TOKEN = process.env.TREFLE_TOKEN;
 
 /* ================== HELPERS ================== */
 
@@ -69,33 +69,6 @@ async function getTrefleDetailedData(sciname) {
     }
 }
 
-async function getFrenchData(sciname) {
-    try {
-        const sparql = `
-      SELECT ?label (GROUP_CONCAT(DISTINCT ?alias; SEPARATOR="|") AS ?aliases) WHERE {
-        ?item wdt:P225 "${sciname}".
-        OPTIONAL { ?item rdfs:label ?label. FILTER(LANG(?label)="fr") }
-        OPTIONAL { ?item skos:altLabel ?alias. FILTER(LANG(?alias)="fr") }
-      } GROUP BY ?item ?label LIMIT 1
-    `;
-        const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(sparql)}&format=json`;
-        const res = await fetchWithTimeout(
-            url,
-            { headers: { "User-Agent": "TreeGame/1.0" } },
-            12000
-        );
-        const json = await res.json();
-        const r = json.results.bindings[0];
-        if (!r) return null;
-        return {
-            main: r.label?.value,
-            aliases: r.aliases?.value?.split("|") ?? []
-        };
-    } catch {
-        return null;
-    }
-}
-
 // Load trees JSON from public URL
 async function loadTreesData(baseUrl) {
     try {
@@ -120,47 +93,31 @@ const router = express.Router();
 
 router.get("/common-trees", async (req, res) => {
     try {
-        const selectedArea = req.query.area || 'western-europe';
-        console.log("Requested area:", selectedArea);
-
-        // Get base URL from the request
         const protocol = req.headers['x-forwarded-proto'] || 'http';
         const host = req.headers['x-forwarded-host'] || req.headers.host;
         const baseUrl = `${protocol}://${host}`;
 
-        // Load trees database
         const treesDatabase = await loadTreesData(baseUrl);
         if (!treesDatabase) {
             return res.status(500).json({ error: "Failed to load trees database" });
         }
 
-        // Get trees for the selected area
-        const treesForArea = treesDatabase[selectedArea];
-        if (!treesForArea || treesForArea.length === 0) {
-            console.error(`No trees found for area: ${selectedArea}`);
-            return res.status(404).json({ error: `No trees available for area: ${selectedArea}` });
+        // Single dataset now — grab the only (or first) key present
+        const treesForArea = Object.values(treesDatabase)[0];
+
+        if (!treesForArea || !treesForArea.length) {
+            return res.status(500).json({ error: "No trees found in database" });
         }
 
-        console.log(`Found ${treesForArea.length} trees for ${selectedArea}`);
-
-        // Pick a random tree
         const randomTree = treesForArea[Math.floor(Math.random() * treesForArea.length)];
 
         console.log(`Selected: ${randomTree.scientificName}`);
 
-        // Get aliases from Wikidata
-        const fr = await getFrenchData(randomTree.scientificName);
-
-        // Get Trefle data for botanical details
         const trefle = await getTrefleDetailedData(randomTree.scientificName);
 
-        // Use aliases from Wikidata if available, otherwise use empty array
-        const aliases = (fr && fr.aliases && fr.aliases.length > 0) ? fr.aliases : [];
+        const aliases = Array.isArray(randomTree.aliases) ? randomTree.aliases : [];
+        const frenchName = randomTree.frenchName || aliases[0] || randomTree.scientificName;
 
-        // Use French name from JSON, fallback to Wikidata if needed
-        const frenchName = randomTree.frenchName || fr?.main || randomTree.scientificName;
-
-        // Create botanical details object with occurrences
         const botanicalDetails = trefle || {};
         botanicalDetails.occurrences = randomTree.occurrences;
 

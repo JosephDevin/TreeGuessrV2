@@ -5,9 +5,8 @@ export function createTree(scientificName, frenchName, aliases, trefleData, fami
 // FETCHES THE RESULT OF SERVER SIDE
 export async function getData() {
     const urlParams = new URLSearchParams(window.location.search);
-    const selectedArea = urlParams.get('area') || localStorage.getItem('selectedArea') || 'whole-world';
 
-    const response = await fetch(`/.netlify/functions/common-trees?area=${selectedArea}`);
+    const response = await fetch(`/.netlify/functions/common-trees`);
     const data = await response.json();
 
 

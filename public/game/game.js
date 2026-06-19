@@ -54,7 +54,7 @@ window.onload = async function () {
         UI LOGIC
         ======================================== */
 
-        document.getElementById("title").innerHTML = `TreeGuessr (<span class="emoji">${getSelectedEmoji()}</span>)`;
+        document.getElementById("title").innerHTML = `TreeGuessr (<span class="emoji">🌳</span>)`;
 
         // HANDLES UI LOGIC FOR STANDARD MODE
         if (mode === 'standard') {
@@ -301,8 +301,8 @@ let activeIndex = -1;
 // Loads data
 async function loadAliases() {
     try {
-        const response = await fetch("../data/aliases/aliases_WE.txt");
-        if (!response.ok) throw new Error("Could not find aliases_WE.txt");
+        const response = await fetch("../data/aliases/aliases.txt");
+        if (!response.ok) throw new Error("Could not find aliases.txt");
 
         const text = await response.text();
 
@@ -413,41 +413,4 @@ function levenshtein(a, b) {
 function similarity(a, b) {
     const maxLen = Math.max(normalizeStr(a).length, normalizeStr(b).length) || 1;
     return 1 - (levenshtein(a, b) / maxLen);
-}
-
-// Display in the title which area is chosen
-function getSelectedEmoji() {
-    let selectedArea = localStorage.getItem("selectedArea");
-
-    switch (selectedArea) {
-        case "western-europe":
-            return "🇪🇺";
-        case "central-europe":
-            return "🌲";
-        case "mediterranean-europe":
-            return "🌞";
-        case "northern-europe":
-            return "❄️";
-        case "caucasus":
-            return "🏔️";
-        case "north-africa":
-            return "🏜️";
-        case "african-savanna":
-            return "🐘";
-        case "afrotropical":
-            return "🌴";
-        case "african-highlands":
-            return "🌄";
-        case "west-central-asia":
-            return "🪾";
-        case "east-asia":
-            return "🌸";
-        case "south-sea-asia":
-            return "🥥";
-        case "north-america":
-            return "🍁";
-        case "neotropics":
-            return "🦜";
-
-    }
 }
