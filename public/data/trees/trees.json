@@ -13,7 +13,7 @@
       "family": "Fagaceae",
       "occurrences": 633254,
       "aliases": [
-        "Foyard", "Hêtre pourpre", "Hêtre commun"
+        "Hêtre commun", "Hêtre pourpre", "Foyard"
       ]
     },
     {
@@ -38,7 +38,7 @@
       "family": "Fagaceae",
       "occurrences": 709448,
       "aliases": [
-        "Chêne commun"
+        "Chêne", "Chêne commun"
       ]
     },
     {
@@ -118,7 +118,7 @@
       "family": "Pinaceae",
       "occurrences": 310434,
       "aliases": [
-        "Pin d'Ecosse", "Pin sylvestre, Pin de Riga"
+        "Pin d'Ecosse", "Pin sylvestre", "Pin de Riga"
       ]
     },
     {

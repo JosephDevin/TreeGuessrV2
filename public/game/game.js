@@ -245,7 +245,7 @@ function guess() {
 
             setTimeout(() => {
                 window.location.href = "end/end_survival.html";
-                }, 400);
+            }, 400);
         }
     }
     else if (mode === 'chrono') {
@@ -298,26 +298,41 @@ const suggestionsEl = document.getElementById("suggestions");
 const answerInput = document.getElementById("answer");
 let activeIndex = -1;
 
-// Loads data
+// Loads the aliases and handle the ui logic for suggestions
 async function loadAliases() {
     try {
-        const response = await fetch("../data/aliases/aliases.txt");
-        if (!response.ok) throw new Error("Could not find aliases.txt");
+        const response = await fetch("../data/trees/trees.json");
+        if (!response.ok) throw new Error("Could not find trees.json");
 
-        const text = await response.text();
+        const raw = await response.json();
 
-        const list = text
-            .split(/\r?\n/)
-            .map(line => line.trim())
-            .filter(line => line && line !== "None");
+        const data = Object.values(raw).flat();
 
-        CANDIDATES = [...new Set(list)];
+        CANDIDATES = data
+            .filter(tree => tree && Array.isArray(tree.aliases) && tree.aliases.length)
+            .map(tree => {
+                const names = tree.aliases.filter(a => a && a !== "None");
+                return {
+                    name: names[0],
+                    aliases: names.slice(1)
+                };
+            })
+            .filter(candidate => candidate.name);
 
         // Start game logic once data is ready
         setupEventListeners();
     } catch (err) {
         console.error("Failed to initialize CANDIDATES:", err);
     }
+}
+
+function bestMatchScore(query, candidate) {
+    let best = similarity(query, candidate.name);
+    for (const alias of candidate.aliases) {
+        const s = similarity(query, alias);
+        if (s > best) best = s;
+    }
+    return best;
 }
 
 // Suggestion logic
@@ -329,17 +344,47 @@ function hideSuggestions() {
 
 function showSuggestions(list) {
     suggestionsEl.classList.remove("is-hidden");
-    suggestionsEl.replaceChildren(...list.map((text, idx) => {
+    suggestionsEl.replaceChildren(...list.map((candidate) => {
         const li = document.createElement("li");
         li.role = "option";
-        li.textContent = text;
-        li.dataset.value = text;
+        li.classList.add("suggestion-item");
+        li.dataset.value = candidate.name;
+
+        const mainLabel = document.createElement("span");
+        mainLabel.classList.add("suggestion-main");
+        mainLabel.textContent = candidate.name;
+        li.appendChild(mainLabel);
+
+        // Only build the aliases sub-list if this tree actually has aliases
+        if (candidate.aliases.length) {
+            const subList = document.createElement("ul");
+            subList.classList.add("suggestion-sublist", "is-hidden");
+
+            candidate.aliases.forEach(alias => {
+                const subLi = document.createElement("li");
+                subLi.classList.add("suggestion-alias");
+                subLi.textContent = alias;
+                subList.appendChild(subLi);
+            });
+
+            li.appendChild(subList);
+
+            li.addEventListener("mouseenter", () => {
+                subList.classList.remove("is-hidden");
+                li.classList.add("is-expanded");
+            });
+            li.addEventListener("mouseleave", () => {
+                subList.classList.add("is-hidden");
+                li.classList.remove("is-expanded");
+            });
+        }
 
         li.addEventListener("mousedown", (e) => {
             e.preventDefault();
-            answerInput.value = text;
+            answerInput.value = candidate.name;
             hideSuggestions();
         });
+
         return li;
     }));
 }
@@ -354,23 +399,16 @@ function setupEventListeners() {
             return;
         }
 
-        // Score all candidates and pick top 3
+        // Score all candidates (name + aliases) and pick top 3 trees
         const scored = CANDIDATES
-            .map(name => [name, similarity(q, name)])
+            .map(candidate => [candidate, bestMatchScore(q, candidate)])
             .sort((a, b) => b[1] - a[1])
             .slice(0, 3)
-            .map(([name]) => name);
+            .map(([candidate]) => candidate);
 
         if (scored.length) showSuggestions(scored);
         else hideSuggestions();
     });
-
-    // Add the clicked suggestion to the guess input.
-    suggestionsEl.addEventListener("click", (e) => {
-        e.preventDefault();
-        const picked = items[activeIndex]?.dataset.value;
-        if (picked) answerInput.value = picked;
-    })
 
     // Hide suggestions when clicking outside
     document.addEventListener("click", (e) => {
