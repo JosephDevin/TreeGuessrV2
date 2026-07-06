@@ -314,6 +314,22 @@ svg path {
     margin: 0;
 }
 
+#reportError {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 0.75rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 4px 0;
+    margin-top: 8px;
+    display: block;
+}
+
+#reportError:hover {
+    color: #666;
+}
+
 
 
 

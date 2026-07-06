@@ -535,6 +535,167 @@
       "aliases": [
         "Frêne du midi"
       ]
+    },
+    {
+      "scientificName": "Gingko biloba",
+      "family": "Gingko",
+      "occurrences": 34860,
+      "aliases": [
+        "Gingko", "Arbre aux 40 écus"
+      ]
+    },
+    {
+      "scientificName": "Cupressus sempervirens",
+      "family": "Cupressus",
+      "occurrences": 34860,
+      "aliases": [
+        "Cyprès", "Cyprès commun", "Cyprès d'Italie"
+      ]
+    },
+    {
+    "scientificName": "Cedrus libani",
+    "family": "Cedrus",
+    "occurrences": 34860,
+    "aliases": [
+      "Cèdre du Liban", "Cyprès commun", "Cyprès d'Italie"
+    ]
+    },
+    {
+      "scientificName": "Cedrus libani",
+      "family": "Cedrus",
+      "occurrences": 34860,
+      "aliases": [
+        "Cèdre du Liban", "Cyprès commun", "Cyprès d'Italie"
+      ]
+    },
+    {
+      "scientificName": "Pinus pinea",
+      "family": "Pinus",
+      "occurrences": 34860,
+      "aliases": [
+        "Pin parasol", "Pin pignon"
+      ]
+    },
+    {
+      "scientificName": "Ficus carica",
+      "family": "Ficus",
+      "occurrences": 34860,
+      "aliases": [
+        "Figuier"
+      ]
+    },
+    {
+      "scientificName": "Magnolia grandiflora",
+      "family": "Magnolia",
+      "occurrences": 34860,
+      "aliases": [
+        "Magnolia à grandes fleurs", "Laurier tulipier"
+      ]
+    },
+    {
+      "scientificName": "Platanus orientalis",
+      "family": "Platanus",
+      "occurrences": 34860,
+      "aliases": [
+        "Platane", "Platane de Londres", "Platane commun"
+      ]
+    },
+    {
+      "scientificName": "Pyrus communis",
+      "family": "Pyrus",
+      "occurrences": 34860,
+      "aliases": [
+        "Poirier", "Poirier commun"
+      ]
+    },
+    {
+      "scientificName": "Cydonia oblonga",
+      "family": "Cydonia",
+      "occurrences": 34860,
+      "aliases": [
+        "Cognassier"
+      ]
+    },
+    {
+      "scientificName": "Mespilus germanica",
+      "family": "Mespilus",
+      "occurrences": 34860,
+      "aliases": [
+        "Néflier"
+      ]
+    },
+    {
+      "scientificName": "Prunus persica",
+      "family": "Prunus",
+      "occurrences": 34860,
+      "aliases": [
+        "Pêcher"
+      ]
+    },
+    {
+      "scientificName": "Prunus armeniaca",
+      "family": "Prunus",
+      "occurrences": 34860,
+      "aliases": [
+        "Abricotier"
+      ]
+    },
+    {
+      "scientificName": "Prunus cerasus",
+      "family": "Prunus",
+      "occurrences": 34860,
+      "aliases": [
+        "Cerisier", "Cerisier commun"
+      ]
+    },
+    {
+      "scientificName": "Acacia saligna",
+      "family": "Acacia",
+      "occurrences": 34860,
+      "aliases": [
+        "Acacia"
+      ]
+    },
+    {
+      "scientificName": "Citrus sinensis",
+      "family": "Citrus",
+      "occurrences": 34860,
+      "aliases": [
+        "Oranger"
+      ]
+    },
+    {
+      "scientificName": "Citrus limon",
+      "family": "Citrus",
+      "occurrences": 34860,
+      "aliases": [
+        "Citronnier"
+      ]
+    },
+    {
+      "scientificName": "Olea europea",
+      "family": "Olea",
+      "occurrences": 34860,
+      "aliases": [
+        "Olivier", "Olivier commun", "Olivier d'Europe"
+      ]
+    },
+    {
+      "scientificName": "Syringa vulgaris",
+      "family": "Syringa",
+      "occurrences": 34860,
+      "aliases": [
+        "Lilas", "Lilas commun"
+      ]
+    },
+    {
+      "scientificName": "Catalpa bignonioides",
+      "family": "Catalpa",
+      "occurrences": 34860,
+      "aliases": [
+        "Catalpa", "Catalpa commun"
+      ]
     }
+
   ]
 }

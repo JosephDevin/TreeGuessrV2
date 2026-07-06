@@ -54,7 +54,7 @@ window.onload = async function () {
         UI LOGIC
         ======================================== */
 
-        document.getElementById("title").innerHTML = `TreeGuessr (<span class="emoji">🌳</span>)`;
+        document.getElementById("title").innerHTML = `TreeGuessr`;
 
         // HANDLES UI LOGIC FOR STANDARD MODE
         if (mode === 'standard') {

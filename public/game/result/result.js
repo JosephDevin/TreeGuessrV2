@@ -80,15 +80,13 @@ window.onload = function() {
     rarityEl.style.color = rarity.color;
 
     nextBtn.onclick = () => {
-        const selectedArea = localStorage.getItem("selectedArea") || "whole-world";
-
         // If game finished
         if (round >= 5) {
             window.location.href = "../end/end.html";
         }
         else {
             localStorage.setItem("round", round + 1);
-            window.location.href = `../game.html?area=${selectedArea}`;
+            window.location.href = `../game.html`;
         }
     };
 
