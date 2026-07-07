@@ -131,72 +131,6 @@ h1 {
 .cta:active { transform: translateY(0) scale(0.99); filter: brightness(.98); }
 .cta:focus-visible { outline: none; box-shadow: 0 0 0 6px var(--ring), var(--shadow); }
 
-/* =======================
-   Area Select Dropdown
-======================= */
-.area-select { position: relative; z-index: 50; }
-
-.area-btn {
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 1.05rem;
-    padding: 1rem 1.4rem;
-    border-radius: 999px;
-    border: 1px solid hsl(0 0% 100% / .25);
-    background: linear-gradient(180deg, hsl(0 0% 100% / .15), hsl(0 0% 100% / .05));
-    color: var(--fg);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    backdrop-filter: blur(10px);
-    transition: filter .2s ease;
-}
-.area-btn:hover { filter: brightness(1.1); }
-.area-select.open .area-btn { filter: brightness(1.15); }
-
-.chevron { transition: transform .2s ease; }
-.area-select.open .chevron { transform: rotate(180deg); }
-
-.area-menu {
-    position: absolute;
-    top: calc(100% + .75rem);
-    right: 0;
-    min-width: 280px;
-    max-height: 220px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: hsl(215 25% 12% / .97);
-    border: 1px solid hsl(0 0% 100% / .15);
-    border-radius: 16px;
-    padding: .4rem;
-    box-shadow: 0 30px 80px hsl(210 50% 3% / .8);
-    list-style: none;
-    opacity: 0;
-    transform: translateY(-6px);
-    pointer-events: none;
-    transition: opacity .18s ease, transform .18s ease;
-}
-.area-select.open .area-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
-
-.area-menu li {
-    position: relative;
-    padding: .7rem .9rem;
-    border-radius: 10px;
-    font-size: .95rem;
-    cursor: pointer;
-    color: var(--fg);
-}
-.area-menu li.selected { background: hsl(160 70% 45% / .35); color: white; }
-
-.area-select { position: relative; z-index: 50; }
-
-.area-btn:hover { filter: brightness(1.1); }
-.area-select.open .area-btn { filter: brightness(1.15); }
-
-.chevron { transition: transform .2s ease; }
-.menu-select.open .chevron { transform: rotate(180deg); }
-
 /* SELECT MODE */
 
 /* MODE SELECT CONTAINER */
@@ -276,6 +210,30 @@ h1 {
     color: white;
 }
 
+/* Information Button */
+
+#information {
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0;
+    font-size: 1.1rem;
+    color: var(--muted);
+    background: hsl(0 0% 100% / .08);
+    border: 1px solid hsl(0 0% 100% / .15);
+    box-shadow: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#information .icon {
+    font-size: 1em;
+    line-height: 1;
+    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* Divider */
 .area-menu li.divider {
@@ -353,4 +311,101 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
     body::before, body::after { animation: none; }
     .cta, .area-btn, .lang-btn { transition: none; }
+}
+
+
+
+
+/* =======================
+   Information Modal
+======================= */
+.info-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: hsl(210 50% 3% / .65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+}
+
+.info-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.info-card {
+    position: relative;
+    backdrop-filter: saturate(140%) blur(18px);
+    -webkit-backdrop-filter: saturate(140%) blur(18px);
+    background: linear-gradient(180deg, hsl(0 0% 100% / .08), hsl(0 0% 100% / .04));
+    border: 1px solid hsl(0 0% 100% / .12);
+    border-radius: 28px;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    box-shadow: 0 0 0 1px hsl(0 0% 100% / .02), 0 40px 120px hsl(210 50% 3% / .8);
+    width: min(100%, 640px);
+    max-height: min(80vh, 700px);
+    overflow-y: auto;
+    color: var(--fg);
+    text-align: left;
+    transform: translateY(12px) scale(.98);
+    transition: transform .25s ease;
+}
+
+.info-overlay.open .info-card {
+    transform: translateY(0) scale(1);
+}
+
+.info-card h2 {
+    margin: 0 0 1rem 0;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    background: linear-gradient(95deg, hsl(160 100% 75%), hsl(160 90% 60%) 30%, hsl(160 80% 45%) 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.info-card p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: clamp(.95rem, 1.5vw, 1.05rem);
+    margin: 0 0 1rem 0;
+}
+
+.info-close {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+    border: 1px solid hsl(0 0% 100% / .15);
+    background: hsl(0 0% 100% / .06);
+    color: var(--muted);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+}
+
+.info-close:hover {
+    background: hsl(0 0% 100% / .14);
+    color: var(--fg);
+}
+
+.info-card::-webkit-scrollbar { width: 8px; }
+.info-card::-webkit-scrollbar-thumb { background: hsl(160 60% 45% / .4); border-radius: 8px; }
+
+.info-card li.space-after {
+    margin-bottom: 1.6rem;
 }

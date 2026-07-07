@@ -34,11 +34,41 @@
                     <li data-value="survival" data-tooltip="Mode survie">🐻 Mode survie</li>
                 </ul>
             </div>
+
+            <div class="cta" id="information">
+                <span class="icon" aria-hidden="true">❔</span>
+            </div>
         </div>
         <div class="high-score" id="highScore">
             Meilleur score : 0
         </div>
     </section>
+
+    <div class="info-overlay" id="infoOverlay">
+        <div class="info-card">
+            <button class="info-close" id="infoClose" aria-label="Fermer">✕</button>
+            <h2>Déroulement du jeu</h2>
+            <p>Une fois la partie lancée, le jeu proposera trois images d'une espèce d'arbre spécifique : sa feuille, l'arbre en géneral, son fruit (s'il en a un).</p>
+            <p>Alors, selon le mode, la partie se déroulera différement : </p>
+            <ul>
+                <li class="space-after">🌱 Mode standard - 5 arbres seront présentés. Le joueur a 5 essais à chaque tour, à chaque mauvaise réponse il perd 1000 points. S'il passe, il obtiendra la moitié des points restants.<br /></li>
+                <li class="space-after">⏱️ Mode chrono - Un minuteur d'une minute sera lancé, le but étant de deviner le plus d'arbres dans le temps imparti, il est possible de passer les arbres sans contreparties.<br /></li>
+                <li class="space-after">🐻 Mode survie - Aucune mauvaise réponse n'est permise : le jeu se termine à la première mauvaise réponse du joueur, le but est d'enchainer le plus de bonnes réponses possibles.<br /></li>
+            </ul>
+
+            <p>Il y a plus de 80 espèces d'arbres à deviner : pour vous aider, en inscrivant le nom d'un arbre, les noms communs de l'espèce apparaissent et sont facilement sélectionnables.</p>
+            <p>Les arbres dans ce jeu sont le haut de liste des arbres les plus répandus en France, en voici le top 3, selon l'ONF : </p>
+            <ul>
+                <li>Crataegus monogyna - L'aubépine blanche, 87000 occurences.</li>
+                <li>Fraxinus excelsior - Le frêne élevé, 78000 occurences.</li>
+                <li>Fagus sylvatica - Le hêtre commun, 63000 occurences.</li>
+            </ul>
+
+            <p>Ci-dessous, le lien vers le site de trefle.io d'où les images sont tirées, et le site de l'ONF dont la liste des espèces est tirée.</p>
+            <p><a href="https://trefle.io/">Trefle.io</a> - <a href="https://www.onf.fr/">Office National des Forets</a></p>
+
+        </div>
+    </div>
 </main>
 
 <script>
@@ -131,6 +161,20 @@
 
     document.addEventListener("keydown", (e) => {
         if(e.key === "Escape") modeSelect.classList.remove("open");
+    });
+
+
+    const infoBtn = document.getElementById('information');
+    const infoOverlay = document.getElementById('infoOverlay');
+    const infoClose = document.getElementById('infoClose');
+
+    infoBtn.addEventListener('click', () => infoOverlay.classList.add('open'));
+    infoClose.addEventListener('click', () => infoOverlay.classList.remove('open'));
+    infoOverlay.addEventListener('click', (e) => {
+        if (e.target === infoOverlay) infoOverlay.classList.remove('open');
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') infoOverlay.classList.remove('open');
     });
 
 </script>

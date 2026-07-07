@@ -537,14 +537,6 @@
       ]
     },
     {
-      "scientificName": "Gingko biloba",
-      "family": "Gingko",
-      "occurrences": 34860,
-      "aliases": [
-        "Gingko", "Arbre aux 40 écus"
-      ]
-    },
-    {
       "scientificName": "Cupressus sempervirens",
       "family": "Cupressus",
       "occurrences": 34860,
@@ -557,15 +549,15 @@
     "family": "Cedrus",
     "occurrences": 34860,
     "aliases": [
-      "Cèdre du Liban", "Cyprès commun", "Cyprès d'Italie"
+      "Cèdre du Liban"
     ]
     },
     {
-      "scientificName": "Cedrus libani",
+      "scientificName": "Cedrus atlantica",
       "family": "Cedrus",
       "occurrences": 34860,
       "aliases": [
-        "Cèdre du Liban", "Cyprès commun", "Cyprès d'Italie"
+        "Cèdre bleu", "Cèdre bleu de l'Atlas"
       ]
     },
     {
@@ -657,27 +649,11 @@
       ]
     },
     {
-      "scientificName": "Citrus sinensis",
-      "family": "Citrus",
-      "occurrences": 34860,
-      "aliases": [
-        "Oranger"
-      ]
-    },
-    {
       "scientificName": "Citrus limon",
       "family": "Citrus",
       "occurrences": 34860,
       "aliases": [
         "Citronnier"
-      ]
-    },
-    {
-      "scientificName": "Olea europea",
-      "family": "Olea",
-      "occurrences": 34860,
-      "aliases": [
-        "Olivier", "Olivier commun", "Olivier d'Europe"
       ]
     },
     {
